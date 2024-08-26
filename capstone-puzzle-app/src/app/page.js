@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import NavBar from "./_components/NavBar";
 import Riddle from "./_components/mainPage/Riddle";
 import Welcome from "./_components/mainPage/welcome";
+import Footer from "./_components/Footer";
 
 export default function Home() {
   return (
@@ -17,8 +18,8 @@ export default function Home() {
             <Riddle />
           </div>
         </div>
-
       </div>
+      <Footer />
     </main>
   );
 }

@@ -27,3 +27,17 @@ body {
 .riddle-card {
   margin: 1%
 }
+
+#spotify {
+  background-color: rgb(252, 113, 0);
+  border-radius: 5px;
+}
+
+.arrows {
+  margin: 0;
+  padding: 0%;
+}
+
+.radioButtons {
+  margin-left: 4%;
+}
