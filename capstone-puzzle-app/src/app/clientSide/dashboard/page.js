@@ -1,15 +1,15 @@
 import NavBar from "../../_components/NavBar";
+import '@/styles/dashboard.css';
 
 
 export default function Dashboard() {
     return(
     <div>
-        <NavBar/>
-        <div className="container">
-            <div className="row">
+        <div className="container m-3">
+            <div className="row card-row">
                 <h1 className="col">Your Dashboard</h1>
             </div>
-            <div className="row">
+            <div className="row card-row">
                 <div className="col card">
                     <div className="card-body">
                         <h4>Appearance Preferences</h4>
@@ -38,6 +38,26 @@ export default function Dashboard() {
                 </div>
 
 
+            </div>
+            <div className="row card-row">
+                <div className="col">
+                    <div className="col card">
+                        <div className="card-body">
+                            <h4>Add Your Own Puzzle</h4>
+                            <form>
+                                <div className="m-2">
+                                    <label htmlFor="question">Riddle: </label>
+                                    <input className="ms-4" type="text" id="question" name="answer"></input>
+                                </div>
+                                <div className="m-2">
+                                    <label htmlFor="answer">Answer: </label>
+                                    <input input className="ms-3"type="text" id="answer" name="answer"></input>
+                                </div>
+                                <button type="button" className="btn btn-success" >Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

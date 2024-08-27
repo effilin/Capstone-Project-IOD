@@ -1,24 +1,16 @@
- import NavBar from "../../_components/NavBar"
- import Footer from "@/app/_components/Footer"
+ import PuzzleData from "@/app/_components/puzzle/puzzleData"
+
 export default function PuzzlePage() {
 
     return (
         <div>
             <div className="container text-center">
-               <div className="col">
-                 <div className="row">
-                    <NavBar />
-                 </div>
-                 <div className="row">
-                   
-                 </div>
-                 <div className="row">
-                   <Footer />
-                 </div>
+                <div className="col">
+                    <div className="row">
+                      <PuzzleData id='1' />
+                    </div>
                </div>
             </div>
-            <NavBar />
-            
         </div>
     )
 }

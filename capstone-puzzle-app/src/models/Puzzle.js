@@ -8,6 +8,6 @@ const puzzleSchema = new mongoose.Schema({
         answer: { type: Array}
     },
     createdAt: {type: Date, default: Date.now}
-}, { collection: 'puzzle'})
+}, { collection: 'puzzles'})
 
 export default mongoose.models.Puzzle || mongoose.model('Puzzle', puzzleSchema)

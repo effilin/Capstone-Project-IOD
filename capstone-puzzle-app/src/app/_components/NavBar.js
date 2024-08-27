@@ -10,12 +10,12 @@ export default function NavBar() {
                         <ul className="dropdown-menu">
                             <li><Link className="dropdown-item" href="/">Home</Link></li>
                             <li><Link className="dropdown-item" href="/clientSide/dashboard">Dashboard</Link></li>
-                            <li><Link className="dropdown-item" href="/puzzle">Puzzle</Link></li>
+                            <li><Link className="dropdown-item" href="/clientSide/puzzle">Puzzle</Link></li>
                         </ul>
                 </div>
 
                 <div className="col">
-                    <h1>Puzzler</h1>
+                    <h1>Puzzled</h1>
                 </div>
             </div>
 

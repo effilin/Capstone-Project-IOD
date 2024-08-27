@@ -2,7 +2,10 @@
 
 export async function fetchRiddle() {
 
-    const riddle = await fetch('https://riddles-api.vercel.app/random')
+    const riddle = await fetch('https://riddles-api.vercel.app/random', {
+      cache: 'no-store'
+    }
+    )
 
     if(!riddle.ok){
         throw new Error
@@ -14,7 +17,7 @@ export async function fetchRiddle() {
     const riddleJson = await fetchRiddle()
     const newRiddle = riddleJson.riddle
     const answer = riddleJson.answer
-    console.log(riddleJson)
+    
 
     return(
         <div className="card riddle-card ">

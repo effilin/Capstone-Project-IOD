@@ -5,44 +5,56 @@ import { NextResponse } from "next/server"
 
 
 
-const addUser = async (user) => {
-    const name = user.get('name')
-    const zipCode = user.get('zipCode')
-    const password = user.get('password')
-    const theme = user.get('theme')
+export async function POST(req , res) {
 
-    const newUser = new User({name, zipCode, password, theme})
+    await dbConnect();
+ 
+        try {
+        
+        const { name, zipCode, theme} = await req.json()
     
-    console.log(newUser)
-
-    try{ 
-
-    return newUser.save()
-
-}catch(error) {
-    console.error('Error Saving')
-    throw error
-}
-}
-
-const findUser = async (user) =>{
-
-    const name = user.get('name')
-    const password = user.get('password')
-
-    if(!name || !password) {
-        throw new Error("Name or Password is undefined")
+        const newUser = new User({name, zipCode, theme});
+    
+        await newUser.save()
+        console.log(newUser)
+        return new Response(JSON.stringify({message:'User created successfully!'}), {status: 201})
+    
+        } catch (error){
+            return new Response(JSON.stringify({ error: 'Error creating user' }), {
+                status: 500,
+        })}
     }
 
-    const myUser = await User.findOne( {name: name, password: password})
-    if (!myUser) {
-        console.log('User Not Found. Please Sign up')
-    }
-    console.log(myUser)
+export async function GET(request) {
+
+    try {
+        const searchParams = request.nextURL.searchParams
+        const name= searchParams.get('name')
+        const zipCode = searchParams.get('zipCode')
+        console.log( name, zipCode)
+
+        if(!name || !zipCode) {
+            return new Response(JSON.stringify({error: 'name or zip code not received'}))
+        };
+
+        const user = await User.findOne({ name: name, zipCode: zipCode }, {status: 404})
+
+         if (!user) {
+            return new Response(JSON.stringify({error: 'user not found'}))
+         };
+         console.log(user)
+        
+         return new Response(JSON.stringify(user), {status: 200})
+
+    } catch (error) {
+            return new Response(JSON.stringify({error: 'error retrieving'}))
+        }
+};
+     
+   
     
- return myUser
+
+
   
-}
 
 
-export { addUser, findUser }
