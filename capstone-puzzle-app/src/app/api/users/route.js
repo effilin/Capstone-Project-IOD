@@ -26,28 +26,30 @@ export async function POST(req , res) {
     }
 
 export async function GET(request) {
-
+    
     try {
-        const searchParams = request.nextURL.searchParams
+        console.log(request.nextUrl.searchParams)
+        const searchParams = request.nextUrl.searchParams
+       
         const name= searchParams.get('name')
         const zipCode = searchParams.get('zipCode')
-        console.log( name, zipCode)
+        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipcode'): ${zipCode}`)
 
         if(!name || !zipCode) {
             return new Response(JSON.stringify({error: 'name or zip code not received'}))
         };
 
-        const user = await User.findOne({ name: name, zipCode: zipCode }, {status: 404})
+        const user = await User.findOne({ name: name, zipCode: zipCode })
 
          if (!user) {
-            return new Response(JSON.stringify({error: 'user not found'}))
+            return new Response(JSON.stringify({error: 'user not found'}), {status: 404})
          };
          console.log(user)
         
-         return new Response(JSON.stringify(user), {status: 200})
-
+         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipcode: user.zipCode}), {status: 200})
+         
     } catch (error) {
-            return new Response(JSON.stringify({error: 'error retrieving'}))
+            return new Response(JSON.stringify({error: 'error retrieving '+ error}))
         }
 };
      

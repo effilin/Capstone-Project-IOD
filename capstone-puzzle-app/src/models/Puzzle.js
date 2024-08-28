@@ -1,12 +1,9 @@
 import mongoose from 'mongoose'
 
 const puzzleSchema = new mongoose.Schema({
-    id: { type: Number, required:true},
-    cards:{
-        front : { type: Array},
-        back: { type: Array},
-        answer: { type: Array}
-    },
+    number:  { type: Number, required: true, unique: true},
+    riddle: { type: String, required:true},
+    answer: { type: String, required:true},
     createdAt: {type: Date, default: Date.now}
 }, { collection: 'puzzles'})
 

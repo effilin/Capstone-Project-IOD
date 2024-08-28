@@ -1,4 +1,4 @@
- import PuzzleData from "@/app/_components/puzzle/puzzleData"
+ import PuzzleCards from "@/app/_components/puzzle/puzzleCards"
 
 export default function PuzzlePage() {
 
@@ -7,7 +7,7 @@ export default function PuzzlePage() {
             <div className="container text-center">
                 <div className="col">
                     <div className="row">
-                      <PuzzleData id='1' />
+                      <PuzzleCards />
                     </div>
                </div>
             </div>

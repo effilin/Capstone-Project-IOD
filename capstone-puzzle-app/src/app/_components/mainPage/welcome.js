@@ -142,7 +142,7 @@ export default function Welcome() {
                             </div>
         
                             <div className="modal-footer">
-                                <button type='submit' className='btn btn-outline-success' onClick={getUser}>Submit</button>
+                                <button type='submit' className='btn btn-outline-success'  data-bs-dismiss="modal" onClick={getUser}>Submit</button>
                             </div>
                             
                 
