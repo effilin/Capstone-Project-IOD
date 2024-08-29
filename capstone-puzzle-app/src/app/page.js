@@ -12,10 +12,10 @@ export default function Home() {
     <main>
       <div className="main-body container">
         <div className="row">
-          <div className="col">
+          <div className="col-md-6 col-sm-12">
             <Welcome />
           </div>
-          <div className="col">
+          <div className="col-md-6 col-sm-12">
             <Riddle />
           </div>
         </div>

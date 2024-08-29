@@ -43,8 +43,9 @@ useEffect(() => {
         null
     } else {
 
-        const answer = puzzle.answer.toUpperCase()
-        const cardStock = answer.split('');
+        const answer = puzzle.answer.toString();
+        const myString = answer.toUpperCase();
+        const cardStock = myString.split('');
         const arrayLength = cardStock.length;
         const spaces = cardStock.filter((x) => x === ' ').length;
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -59,10 +60,10 @@ useEffect(() => {
         results = results.slice(0, spot) + ' ' + results.slice(spot);
             }
 
-    const finalResults = results.split('');
+    let finalResults = results.split('');
 
     setCards({front: cardStock, back: finalResults})
-    }}, [puzzle] );
+    }}, [puzzle, number] );
 
     
 
@@ -82,24 +83,25 @@ useEffect(() =>{
 
 
 const  handleChange = ( value , id) => {
-    let myCard = currentCards.find(card => card.id === id);
-    let newCards = currentCards.map(card => card.id === id ? {...card, activeSide: value === sideA? sideA:sideB }: card )
-    setCurrentCards(newCards);
+    let newCards = currentCards.map(card => card.id === id? {...card, activeSide: value}:card)
+    setCurrentCards(newCards); 
     let isCorrect = newCards.every((card) => card.activeSide === card.sideA )
-    console.log(newCards)
+    if (isCorrect === true) {
+        alert("You Win")
+    }
   
  }
 
-
+console.log(currentCards.map((card) => card.activeSide))
 return (
     <div className="container text-center">
         <div className="row">
-            <div className="col">
-                <h5>Riddle: {puzzle.riddle}</h5> 
+            <div className="col ">
+                <h5 className="text">Riddle: {puzzle.riddle}</h5> 
             </div>
-            <div className="col">
+            <div className="col-1">
                 <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onChange={(e) => setNumber(e.target.value)}>
+                    <button className="btn btn-primary dropdown-toggle pop-box" type="button" data-bs-toggle="dropdown" aria-expanded="false" onChange={(e) => setNumber(e.target.value)}>
                     # {number}
                     </button>
                     <ul className="dropdown-menu">

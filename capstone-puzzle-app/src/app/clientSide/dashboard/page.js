@@ -11,13 +11,11 @@ export default function Dashboard() {
     const [riddle, setRiddle] = useState('');
     const [answer, setAnswer] = useState('');
     const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
-    const {theme, setTheme} = useContext(ThemeContext);
+    const {theme, changeTheme} = useContext(ThemeContext);
 
-    useEffect(() => {
-
-    },[])
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         try {
             const res = await fetch('/api/puzzles', {
@@ -35,11 +33,16 @@ export default function Dashboard() {
             console.log('something went wrong')
         };
    };
+
+   const handleTheme = (e) => {
+    changeTheme(e.target.value)
+   }
+   
     return(
     <div>
         <div className="container m-3">
-            <div className="row card-row m-2">
-                <h1 className="col">Your Dashboard</h1>
+            <div className="row  m-2">
+                <h1 className="col text">Your Dashboard</h1>
             </div>
             <div className="row card-row m-2">
                 <div className="col card m-2">
@@ -47,10 +50,10 @@ export default function Dashboard() {
                         <h4>Appearance Preferences</h4>
                         <form>
                             <label htmlFor='themeChoice'>Theme Preference: </label>
-                            <select id="themeChoice" name="theme">
-                                <option value='gardenView'>Garden View</option>
-                                <option value='synthWave'> Synth Wave</option>
-                                <option value='nightSky'>Night Sky</option>
+                            <select id="themeChoice" name="theme" onChange={handleTheme}>
+                                <option value='garden-view'>Garden View</option>
+                                <option value='synth-wave'> Synth Wave</option>
+                                <option value='night-sky'>Night Sky</option>
                             </select>
                         </form>
                     </div>
@@ -79,11 +82,11 @@ export default function Dashboard() {
                             <form>
                                 <div className="m-2">
                                     <label htmlFor="question">Riddle: </label>
-                                    <input className="ms-4" type="text" id="question" name="answer" value={riddle.toString} onChange={(e) => setRiddle(e.target.value.toString())}></input>
+                                    <input className="ms-4" type="text" id="question" name="answer" value={riddle} onChange={(e) => setRiddle(e.target.value.toString())}></input>
                                 </div>
                                 <div className="m-2">
                                     <label htmlFor="answer">Answer: </label>
-                                    <input input className="ms-3"type="text" id="answer" name="answer" value={answer.toString} onChange={(e) => setAnswer(e.target.value.toString())}></input>
+                                    <input className="ms-3"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value.toString())}></input>
                                 </div>
                                 <button type="button" className="btn btn-success" onClick={handleSubmit} >Submit</button>
                             </form>

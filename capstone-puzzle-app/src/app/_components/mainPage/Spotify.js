@@ -6,13 +6,13 @@ export default function Spotify() {
     <div id="spotify">
         <div className="container music">
             <div className="row" id="spotify">
-                <div className="col">
+                <div className="col col-1 col-sm-1 col-md-1 col-lg-1">
                     <button className="carousel-control-prev arrows" type="button" data-bs-target="#carouselMusic" data-bs-slide="prev" style={{position:'relative', width:'100%', height: '100%'}}>
                         <span className="carousel-control-prev-icon" aria-hidden="false" ></span>
                         <span className="visually-hidden">Previous</span>
                     </button>
                 </div>
-                <div className="col col-lg-8">
+                <div className="col ">
                     <div id="carouselMusic" className="carousel slide ">
                         <div className="carousel-inner" style={{marginTop:'3%'}}>
                             <div className="carousel-item active">
@@ -33,7 +33,7 @@ export default function Spotify() {
                         </div>
                     </div> 
                 </div>
-                <div className="col col-lg-2"> 
+                <div className="col col-1 col-sm-1 col-md-1 col-lg-1"> 
                     <button className="carousel-control-next arrows " type="button" data-bs-target="#carouselMusic" data-bs-slide="next" style={{position:'relative', width:'100%', height: '100%'}}>
                         <span className="carousel-control-next-icon" aria-hidden="false"></span>
                         <span className="visually-hidden">Next</span>

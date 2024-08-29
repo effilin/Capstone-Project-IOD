@@ -1,4 +1,4 @@
-
+import'../../globals.css';
 
 export async function fetchRiddle() {
 
@@ -20,7 +20,7 @@ export async function fetchRiddle() {
     
 
     return(
-        <div className="card riddle-card ">
+        <div className="card riddle-card main-card ">
             <div className="card-body">
                 <h3>Today's Riddle: </h3>
                 <h5>{newRiddle}</h5>

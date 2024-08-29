@@ -9,21 +9,22 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
     
     
 
+
  useEffect (() => {
     const random =  Math.random();   
-    random <= .5? setValue(sideA):setValue(sideB)}, []);
-    console.log(value)
+    random <= .5? setValue(sideA):setValue(sideB)
 
+}, []);
 
     const [letterStyle, letterApi] = useSpring(() => ({
-        from: { transform: ` rotateY(0deg)`},
+         transform: ` rotateY(0deg)`,
         config:{ tension: 200, friction: 180, bounce: 1},
         
     }));
     
 
     const [flipStyle, api] = useSpring(() => ({
-        from: { transform: ` rotateY(0deg)`},
+        transform: ` rotateY(0deg)`,
         config:{ tension: 180, friction: 10 },
         
     }));
@@ -40,11 +41,11 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
         setValue(newValue),
         api.start ({
                 from: { transform: ` rotateY(0deg)`},
-                to: { transform: value === sideA ? ` rotateY(360deg)` : `rotateY(-360deg)` },
-                })
+                to: { transform: `rotateY( ${ newValue === sideA ? 360 : -360 }deg)`},
+                }),
         letterApi.start({
                 from: {transform: ` rotateY(0deg)`},
-                to: {transform: value === sideA ? ` rotateY(360deg)` : `rotateY(-360deg)` },
+                to:  { transform: `rotateY( ${ newValue === sideA ? 360 : -360 }deg)`},
             })
         handleChange( newValue, id );
             console.log( newValue , id)
@@ -54,13 +55,13 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
 return (
     
      
-    <div className="card-puzzle" >
-            <animated.div className="flip-inner card-body" style={{...flipStyle}} onClick={handleClick}>
+    <animated.div className="card-puzzle flip-front" style={{...flipStyle}} >
+            <animated.div className="flip-inner card-body" onClick={handleClick}>
                 <div className="flip-front" >
-                   <animated.h1 style={{...letterStyle}}>{value}</animated.h1>
+                   <animated.h1 className='letters' style={{...letterStyle}}>{value}</animated.h1>
                 </div>
             </animated.div>
-    </div>
+    </animated.div>
     )
 
 };

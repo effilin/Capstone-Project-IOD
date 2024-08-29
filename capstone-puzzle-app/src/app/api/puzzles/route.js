@@ -56,15 +56,4 @@ export async function POST(req , res) {
         })}
     }
 
-    async function getPuzzleCount() {
-
-
-        try {
-          const count = await Puzzle.countDocuments();
-      
-          console.log(`Total documents: ${count}`);
-          return(count)
-        } catch (error) {
-          console.error('Error counting documents:', error);
-        }
-      } 
+    

@@ -75,7 +75,7 @@ export default function Welcome() {
         return (
          <div>
             <div>
-                <div className="card m-1">
+                <div className="card m-1 main-card">
                     <div className="card-body">
                         <h5 className="card-title">Welcome</h5>
                         <p className="card-text">Please sign-In or sign up for an account!</p>
@@ -87,7 +87,7 @@ export default function Welcome() {
 {/* modal one is for sign up */}
              <div className='modal fade' id="sign-up-modal" tabIndex='-1' aria-labelledby="signupModalLabel" aria-hidden="true">
              <div className='modal-dialog'>
-                 <div className="modal-content">
+                 <div className="modal-content pop-box">
                     <div className="modal-header">
                         <h5 className="modal-title" id="signupModalLabel">SignUp</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
@@ -126,7 +126,7 @@ export default function Welcome() {
 { /* modal two is for sign In */}
          <div className='modal fade' id="sign-in-modal" tabIndex='-1' aria-labelledby="signInModalLabel" aria-hidden="true">
              <div className='modal-dialog'>
-                 <div className="modal-content">
+                 <div className="modal-content pop-box">
                     <div className="modal-header">
                         <h5 className="modal-title" id="signInModalLabel">SignIn</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
