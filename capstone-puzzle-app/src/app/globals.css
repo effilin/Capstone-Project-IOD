@@ -2,7 +2,7 @@ body {
   background-color: rgb(255, 190, 152);
 }
 .navbar {
-  background-image: url('../../public/images/flowers.png');
+  background-image: var(--background-image);
   background-size: cover;
   background-position: 50%;
   width: 99rem;
@@ -40,4 +40,9 @@ body {
 
 .radioButtons {
   margin-left: 4%;
+}
+
+[data-theme="garden-view"] {
+  --background-image: url('../../public/images/flowers.png');
+
 }

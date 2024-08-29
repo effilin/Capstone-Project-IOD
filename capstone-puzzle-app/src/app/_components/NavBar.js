@@ -1,7 +1,15 @@
+'use client'
 import Link from "next/link";
+import { useEffect } from "react";
+import '../globals.css';
 
 
 export default function NavBar() {
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', "garden-view" )
+      }, [])
+
     return (
         <div className="container nav-container">
             <div className="row navbar"> 

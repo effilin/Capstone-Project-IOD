@@ -1,9 +1,9 @@
 'use client'
 import NavBar from "../../_components/NavBar";
 import '@/styles/dashboard.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react"
-import { PuzzleContext } from "@/app/context"
+import { PuzzleContext, ThemeContext } from "@/app/context"
 
 
 export default function Dashboard() {
@@ -11,6 +11,11 @@ export default function Dashboard() {
     const [riddle, setRiddle] = useState('');
     const [answer, setAnswer] = useState('');
     const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
+    const {theme, setTheme} = useContext(ThemeContext);
+
+    useEffect(() => {
+
+    },[])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -74,11 +79,11 @@ export default function Dashboard() {
                             <form>
                                 <div className="m-2">
                                     <label htmlFor="question">Riddle: </label>
-                                    <input className="ms-4" type="text" id="question" name="answer" value={riddle} onChange={(e) => setRiddle(e.target.value)}></input>
+                                    <input className="ms-4" type="text" id="question" name="answer" value={riddle.toString} onChange={(e) => setRiddle(e.target.value.toString())}></input>
                                 </div>
                                 <div className="m-2">
                                     <label htmlFor="answer">Answer: </label>
-                                    <input input className="ms-3"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value)}></input>
+                                    <input input className="ms-3"type="text" id="answer" name="answer" value={answer.toString} onChange={(e) => setAnswer(e.target.value.toString())}></input>
                                 </div>
                                 <button type="button" className="btn btn-success" onClick={handleSubmit} >Submit</button>
                             </form>

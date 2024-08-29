@@ -1,7 +1,7 @@
  'use client'
 
 import { useState } from "react"
-import { UserContext, PuzzleContext } from "../context";
+import { UserContext, PuzzleContext, ThemeContext } from "../context";
 
  export const UserProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState({});
@@ -22,6 +22,17 @@ export const PuzzleProvider = ({children}) => {
         <PuzzleContext.Provider value={{puzzleNumber, setPuzzleNumber}}>
             {children}
         </PuzzleContext.Provider>
+    );
+}
+
+export const ThemeProvider = ({children}) => {
+    const [theme, setTheme] = useState("garden-view");
+
+
+    return (
+        <ThemeContext.Provider value={{theme, setTheme}}>
+            {children}
+        </ThemeContext.Provider>
     );
 }
 
