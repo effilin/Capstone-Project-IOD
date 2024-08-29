@@ -1,11 +1,18 @@
 'use client'
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import SingleCard from "./singleCard";
+import { useContext } from "react"
+import { PuzzleContext } from "@/app/context"
 
 export default function PuzzleCards() {
 
     const [puzzle, setPuzzle] = useState('');
     const [cards, setCards]= useState('');
-    const number = 1;
+    const [cardList, setCardList] = useState([])
+    const [currentCards, setCurrentCards] = useState([])
+    const [number, setNumber] = useState(1)
+    const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
+    
 
     useEffect(() => {
         const fetchData = async() => {
@@ -15,8 +22,10 @@ export default function PuzzleCards() {
                 });
     
                 if(res.ok) {
-                    const puzzle = await res.json();
-                    setPuzzle({riddle: puzzle.riddle, answer: puzzle.answer })
+                    const puzzleResult = await res.json();
+                    setPuzzle({riddle: puzzleResult.riddle, answer: puzzleResult.answer })
+                    setPuzzleNumber(puzzleResult.count)
+                    console.log(puzzleResult)
                 } else {
                     const errorMessage = await res.json();
                     console.log('error', errorMessage)
@@ -26,32 +35,90 @@ export default function PuzzleCards() {
             }
        };
        fetchData();
-    }, []);
+    }, [number]);
+    
 
-const Cards = async() => {
+useEffect(() => {
+    if (puzzle === '') {
+        null
+    } else {
 
-    const answer = await puzzle.answer
-    const cardStock = answer.split('');
-    const arrayLength = cardStock.length;
-    const spaces = cardStock.filter((x) => x === ' ').length;
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    let results = '';
+        const answer = puzzle.answer.toUpperCase()
+        const cardStock = answer.split('');
+        const arrayLength = cardStock.length;
+        const spaces = cardStock.filter((x) => x === ' ').length;
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let results = '';
+
     for (let i=0; i < (arrayLength - spaces); i++) {
         results += chars.charAt(Math.floor(Math.random() * chars.length))
     }
-    /*for(let i=0; i < spaces; i++) {
-        results += 
-    }*/
-    console.log(results)
 
-return cardStock
-}
-Cards()
+    for(let i=0; i < spaces; i++) {
+        let spot = Math.floor(Math.random() * arrayLength);
+        results = results.slice(0, spot) + ' ' + results.slice(spot);
+            }
+
+    const finalResults = results.split('');
+
+    setCards({front: cardStock, back: finalResults})
+    }}, [puzzle] );
+
+    
+
+useEffect(() =>{
+ if (cards == '') {
+     null
+ } else {
+    let sideA = cards.front;
+    let sideB = cards.back;
+    const cardList = [];
+   for (let i=0; i < sideA.length; i++) {
+    cardList.push({sideA: sideA.at(i), sideB: sideB.at(i), key: (i + 1), id:(i + 1), activeSide: sideB.at(i) })
+   }
+   setCardList(cardList)
+   setCurrentCards(cardList)
+}}, [cards])
+
+
+const  handleChange = ( value , id) => {
+    let myCard = currentCards.find(card => card.id === id);
+    let newCards = currentCards.map(card => card.id === id ? {...card, activeSide: value === sideA? sideA:sideB }: card )
+    setCurrentCards(newCards);
+    let isCorrect = newCards.every((card) => card.activeSide === card.sideA )
+    console.log(newCards)
+  
+ }
+
 
 return (
-    <div>
-        <h3>Riddle: {puzzle.riddle}</h3>
-
+    <div className="container text-center">
+        <div className="row">
+            <div className="col">
+                <h5>Riddle: {puzzle.riddle}</h5> 
+            </div>
+            <div className="col">
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onChange={(e) => setNumber(e.target.value)}>
+                    # {number}
+                    </button>
+                    <ul className="dropdown-menu">
+                      <li className="dropdown-item" onClick={() => setNumber(1)}>1</li>
+                      <li className="dropdown-item" onClick={() => setNumber(2)}>2</li>
+                      <li className="dropdown-item" onClick={() => setNumber(3)}>3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col d-flex flex-wrap">
+                { cardList.length === 0?
+                <h1>Loading</h1>:
+                cardList.map( card => (
+                <SingleCard {...card} handleChange={handleChange} key={card.key}/> ))
+                }
+            </div>
+       </div>
     </div>
 )
 

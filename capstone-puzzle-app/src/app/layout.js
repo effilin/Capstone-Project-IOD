@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import BootstrapClient from './_components/BootstrapClient';
-import { UserProvider } from './provider';
+import { UserProvider, PuzzleProvider } from './provider';
 import NavBar from './_components/NavBar';
 import Footer from './_components/Footer';
 
@@ -19,10 +19,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <UserProvider>
+          <PuzzleProvider>
           <NavBar />
           
           {children}
           <Footer />
+          </PuzzleProvider>
         </UserProvider>
         <BootstrapClient />
       </body>
