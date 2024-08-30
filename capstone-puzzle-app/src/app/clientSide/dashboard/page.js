@@ -48,7 +48,7 @@ export default function Dashboard() {
             <div className="row card-row m-2">
                 <div className="col col-lg-4 col-md-4 col-sm-8 col-12 card m-2">
                     <div className="card-body">
-                        <h4>Appearance Preferences</h4>
+                        <h4>Preferences</h4>
                         <form>
                             <label htmlFor='themeChoice'>Theme : </label>
                             <select id="themeChoice" name="theme" onChange={handleTheme}>
