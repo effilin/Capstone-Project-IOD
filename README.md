@@ -11,12 +11,12 @@ In the future I would like to add a second puzzle similar to battleship. Also I 
 Visual Studio Code: https://code.visualstudio.com/
 or code editor of your choice
 
-<<<<<<< HEAD
-MongoDB:
-=======
-MOngoDB:
->>>>>>> 93b4bc2498828c9364c5dcc0e2be6c93765e30d2
+MongoDB Compass  https://www.mongodb.com/products/tools/compass
+or Atlas
 
+make an account with weather api: https://www.weatherapi.com/
+- accounts are free. 
+- you will need your personal api key
 
 
 ## Getting Started
@@ -59,7 +59,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Lo Fi Figma design:
 
 https://www.figma.com/design/6yqsHVDXX5zrRHM5Lul200/Capstone-Figma-Lo-Fi?node-id=1-63&t=fJCwnaLzPnpFh0gw-1
-<<<<<<< HEAD
 
-=======
->>>>>>> 93b4bc2498828c9364c5dcc0e2be6c93765e30d2
+# Contributors
+Thank you! Ferris and Collin for all our advise and help. Also IOD for the course material.
