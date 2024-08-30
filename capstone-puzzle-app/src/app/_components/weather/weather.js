@@ -3,36 +3,56 @@ import { useEffect, useState, useContext } from "react"
 import { UserContext } from "@/app/context";
 
 
-export default function Info() {
+export default function Weather() {
 
- const [weather, setWeather] = useState(null)
- const [currentUser, setCurrentUser] = useState({});
+ const [weather, setWeather] = useState()
+ const {currentUser, setCurrentUser} = useContext(UserContext);
+ const [conditions, setConditions] = useState();
+ const [city, setCity] = useState();
+ const [state, setState] = useState();
+ const [temp, setTemp] = useState();
+ const [error, setError] = useState()
+
+
 
     useEffect(() => {
-        fetch('http://api.weatherapi.com/v1/current.json?key=bbe3bd0fbac242edb73195504241307&q=23228')
+        const zipCode = currentUser.zipCode || 23228
+        
+        fetch(`http://api.weatherapi.com/v1/current.json?key=bbe3bd0fbac242edb73195504241307&q=${encodeURIComponent(zipCode)}`)
         .then(response => response.json())
-        .then(json => {
-            console.log( json)
+        .then((json) => { 
+         if (json.error) {
+            console.log(json.error)
+         }else
+        
             setWeather(json)
-
         })
-    }, []);
+    }, [currentUser]);
 
-if (weather === '') {
-    return (
-        <div> Loading...</div>
-    )
-} else {
 
-    return (
+useEffect(() => {
+    if(!weather){
+        console.log('no weather');
+    }
+    if(weather) {
+    
+    setConditions( weather.current.condition.text);
+    setCity( weather.location.name)
+    setState( weather.location.region);
+    setTemp( weather.current.temp_f)
+}},[weather])
 
+return ( <div>
+    {!weather? 
+    <div> Loading...</div>:
     <div>
-        <Card>
-        {weather ? 
-       <h3>Looks like the weather is {weather.current.condition.text}. Best to play a puzzle!</h3> 
-       : <h3>Its a perfect day for a puzzle!</h3>}
-       </Card>
+        <h5>{city}, {state}</h5>
+        <h5> Weather conditions: </h5>
+        <p>{conditions}.</p>
+        <p>Temperature: {temp} &#x2109;</p>
+
     </div>
-    )
 }
+</div>
+)
 }
