@@ -1,11 +1,16 @@
- import NavBar
-  from "../../_components/NavBar"
+ import PuzzleCards from "@/app/_components/puzzle/puzzleCards"
+
 export default function PuzzlePage() {
 
     return (
         <div>
-            <NavBar />
-            
+            <div className="container text-center">
+                <div className="col">
+                    <div className="row">
+                      <PuzzleCards />
+                    </div>
+               </div>
+            </div>
         </div>
     )
 }

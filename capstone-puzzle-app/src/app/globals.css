@@ -1,21 +1,33 @@
+
 body {
-  background-color: rgb(255, 190, 152);
+  background-color: var(--primary-color)
 }
 .navbar {
-  background-image: url('../../public/images/flowers.png');
-  background-size: cover;
-  background-position: 50%;
-  width: 99rem;
-  border-radius: 5px;
+  background-image: var(--background-image);
+  background-size: var(--background-size);
+  background-position: var(--background-position);
+  font-family: "Archivo Black", sans-serif;;
+  color:var(--font-color);
+  font-weight: 400;
+  width: 99vw;
+  border-radius: 10px;
+ 
 }
-
+.menu {
+  color: var(--font-color);
+}
+.menu:hover {
+  color: var(--font-color-hover) ;
+}
 .nav-container {
   position: relative;
   margin: .5%;
- justify-content: center;
+  justify-content: center;
  
 }
-
+.pop-box{
+  background-color: var(--popup-color);
+}
 .main-body {
   border: 2px solid black ;
   width: 99rem;
@@ -23,7 +35,59 @@ body {
   margin:.5%;
   border-radius: 5px;
 }
+.text {
+  color:var(--font-color)
+}
 
-.riddle-card {
-  margin: 1%
+.main-card {
+  margin: 1%;
+  background-color: var(--secondary-color);
+}
+
+.footer {
+  background-color: var(--secondary-color);
+  width: 99vw;
+  border-radius: 10px;
+  margin:.5%;
+
+}
+
+.arrows {
+  margin: 0;
+  padding: 0%;
+}
+
+.radioButtons {
+  margin-left: 4%;
+}
+
+[data-theme="garden-view"] {
+  --background-image: url('../../public/images/flowers.png');
+  --background-size: cover;
+  --background-position: 50%;
+  --primary-color:#b6cdbd ;
+  --secondary-color:#95c49b;
+
+}
+
+[data-theme="synth-wave"] {
+  --background-image: url('../../public/images/synthWave.jpg');
+  --background-size: 100% 75%;
+  --background-position: 50%;
+  --primary-color:#2772db ;
+  --secondary-color:#f57b51;
+  --font-color:  #fcf2f2;
+
+}
+
+[data-theme="night-sky"] {
+  --background-image: url('../../public/images/nightSky.jpg');
+  --background-size: 100% 100%;
+  --background-position: 75%;
+  --primary-color:#132a4b ;
+  --secondary-color:#395580;
+  --font-color:  #fcf2f2;
+  --font-color-hover: #a6b1e1;
+  --popup-color: #a6b1e1;
+
 }
