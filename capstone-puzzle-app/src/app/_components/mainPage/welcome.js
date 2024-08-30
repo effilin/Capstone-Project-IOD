@@ -1,15 +1,15 @@
 'use client'
 import { useContext } from "react";
-import { UserContext } from "@/app/context";
+import { UserContext , ThemeContext} from "@/app/context";
 import { POST } from "@/app/api/users/route";
-import { useState } from "react";
+import { useState, } from "react";
 
 
 export default function Welcome() {
 
     const [userName, setUserName] = useState('');
     const [areaCode, setAreaCode] = useState('');
-    const [theme, setTheme] = useState('');
+    const {theme, changeTheme} = useContext(ThemeContext);
     
     
     
@@ -105,13 +105,13 @@ export default function Welcome() {
                             <p> Choose Your Theme </p>
 
                             
-                                <input type="radio" id="garden" name="theme" value="1" className="radioButtons" onChange={(e) => setTheme(e.target.value)} />
+                                <input type="radio" id="garden" name="theme" value="garden-view" className="radioButtons" onChange={(e) => changeTheme(e.target.value)} />
                                 <label htmlFor="garden" className="radioLabel"> Garden </label>
                           
-                                <input type="radio" id="synth" name="theme" value="2" className="radioButtons" onChange={(e) => setTheme(e.target.value)}/>
+                                <input type="radio" id="synth" name="theme" value="synth-wave" className="radioButtons" onChange={(e) => changeTheme(e.target.value)}/>
                                 <label htmlFor="synth" className="radioLabel"> SynthWave </label>
                             
-                                <input type="radio" id="night" name="theme" value="3" className="radioButtons" onChange={(e) => setTheme(e.target.value)}/>
+                                <input type="radio" id="night" name="theme" value="night-sky" className="radioButtons" onChange={(e) => changeTheme(e.target.value)}/>
                                 <label htmlFor="night" className="radioLabel"> Night Sky </label>
                             
                             <div className="modal-footer">
