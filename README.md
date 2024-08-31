@@ -61,4 +61,4 @@ Lo Fi Figma design:
 https://www.figma.com/design/6yqsHVDXX5zrRHM5Lul200/Capstone-Figma-Lo-Fi?node-id=1-63&t=fJCwnaLzPnpFh0gw-1
 
 # Contributors
-Thank you! Ferris and Collin for all our advise and help. Also IOD for the course material.
+Thank you! Ferris and Collin for all your advise and help. Also IOD for the course material.
