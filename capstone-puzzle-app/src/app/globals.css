@@ -67,6 +67,7 @@ body {
   --background-position: 50%;
   --primary-color:#b6cdbd ;
   --secondary-color:#95c49b;
+  --popup-color: #f0f7cc;
 
 }
 
@@ -77,6 +78,7 @@ body {
   --primary-color:#2772db ;
   --secondary-color:#f57b51;
   --font-color:  #fcf2f2;
+  --popup-color: #e4c6c6;
 
 }
 
