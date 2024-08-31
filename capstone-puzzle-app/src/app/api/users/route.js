@@ -32,7 +32,7 @@ export async function GET(request) {
        
         const name= searchParams.get('name')
         const zipCode = searchParams.get('zipCode')
-        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipcode'): ${zipCode}`)
+        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipCode'): ${zipCode}`)
 
         if(!name || !zipCode) {
             return new Response(JSON.stringify({error: 'name or zip code not received'}))
@@ -45,7 +45,7 @@ export async function GET(request) {
          };
          console.log(user)
         
-         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipcode: user.zipCode}), {status: 200})
+         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipCode: user.zipCode}), {status: 200})
          
     } catch (error) {
             return new Response(JSON.stringify({error: 'error retrieving '+ error}))
@@ -60,7 +60,7 @@ export async function DELETE(request) {
        
         const name= searchParams.get('name')
         const zipCode = searchParams.get('zipCode')
-        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipcode'): ${zipCode}`)
+        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipCode'): ${zipCode}`)
 
         if(!name || !zipCode) {
             return new Response(JSON.stringify({error: 'name or zip code not received'}))

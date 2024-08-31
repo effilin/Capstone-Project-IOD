@@ -80,12 +80,12 @@ export default function Dashboard() {
         if ( !currentUser.name) {
             return alert( "please enter username")
         }
-        if (!currentUser.zipcode) {
+        if (!currentUser.zipCode) {
            return alert( "please enter zip code")
         }
        
         try{
-            const res = await fetch(`/api/users?name=${encodeURIComponent(currentUser.name)}&zipCode=${encodeURIComponent(currentUser.zipcode)}`, {
+            const res = await fetch(`/api/users?name=${encodeURIComponent(currentUser.name)}&zipCode=${encodeURIComponent(currentUser.zipCode)}`, {
                 method: 'DELETE',
             });
 
