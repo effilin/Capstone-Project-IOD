@@ -23,7 +23,6 @@ body {
   position: relative;
   margin: .5%;
   justify-content: center;
- 
 }
 .pop-box{
   background-color: var(--popup-color);
@@ -48,7 +47,7 @@ body {
   background-color: var(--secondary-color);
   width: 99vw;
   border-radius: 10px;
-  margin:.5%;
+ margin:.5%;
 
 }
 
