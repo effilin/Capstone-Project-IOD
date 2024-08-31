@@ -60,9 +60,9 @@ export default function Dashboard() {
             })
 
             if(res.ok) {
-                const user = await res.json();
-                setCurrentUser(user)
-                console.log(user)
+                const newUser = await res.json();
+                setCurrentUser(newUser)
+                console.log(newUser)
                 alert("user updated")
             } else {
                 const errorMessage = await res.json();
@@ -109,7 +109,7 @@ export default function Dashboard() {
             <div className="row justify-content-around m-2">
                 {!currentUser.name?
                 <h1 className="col text">Dashboard</h1>:
-                <h1>Dashboard: Welcome Back {currentUser.name}</h1>}
+                <h1 className='col text'>Dashboard: Welcome Back {currentUser.name}</h1>}
             </div>
             <div className="row card-row m-2">
                 <div className="col col-lg-3 col-md-3 col-sm-8 col-12 card m-2">

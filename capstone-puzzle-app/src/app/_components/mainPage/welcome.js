@@ -63,6 +63,7 @@ export default function Welcome() {
             } else {
                 const errorMessage = await res.json();
                 console.log('error', errorMessage)
+                alert('User was not found')
             }
         } catch (error) {
             console.log('OH NO, DID NOT GET IT', error)

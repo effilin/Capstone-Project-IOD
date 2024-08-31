@@ -90,7 +90,7 @@ export async function PUT(req, res) {
             {$set: {name: newName, zipCode: newZipCode, theme: newTheme}});
 
         console.log(updatedUser)
-        return new Response(JSON.stringify({message:'User updated successfully!'}),
+        return new Response(JSON.stringify({name: newName, zipCode: newZipCode, theme: newTheme}),
          {status: 201,
           headers:{'Content-Type': 'application/json'}
           })
