@@ -33,13 +33,13 @@ export default function Welcome() {
                 body: JSON.stringify({name: userName, zipCode: areaCode, theme: theme })
             });
 
-        if (res.ok) {
+     if (res.ok) {
             console.log('user created successfully')
         }
         } catch (error) {
             console.log('something went wrong')
         };
-   };
+   };   
 
    const getUser = async(e) => {
     e.preventDefault();
