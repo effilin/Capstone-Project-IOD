@@ -2,7 +2,6 @@
 
 export async function POST(req) {
 
-console.log(req.body)
 
     const { zipCode} = await req.json();
 

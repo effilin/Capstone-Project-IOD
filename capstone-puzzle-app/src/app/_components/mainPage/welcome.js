@@ -71,7 +71,7 @@ export default function Welcome() {
    };
    
 
-
+{/* home page when not logged in */}
     if ( currentUser.name === undefined) {
         return (
          <div>
@@ -155,7 +155,9 @@ export default function Welcome() {
     </div>
         )} else  {
         return(
-            <h1>Welcome, {currentUser.name}!</h1>
+            <div className=" card m-1 main-card">
+                <h1 className="welcome1">Welcome, {currentUser.name}!</h1>
+            </div>
 
     )}}
 

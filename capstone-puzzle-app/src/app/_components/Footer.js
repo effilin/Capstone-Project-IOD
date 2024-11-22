@@ -9,12 +9,12 @@ export default function Footer() {
 
     return (
         <div className="container text-center footer">
-            <div className="row-sm-12">
-                <div className=" col-12 col-sm-12 col-md-12 col-lg-5 ">
+            <div className="row-sm-12 d-flex flex-row justify-content-around">
+                <div className=" ">
                   <Spotify />
                 </div>
-                <div className="col-sm-2">
-                  
+                <div className="align-self-baseline">
+                    <img src="logo.png" className="float-end" alt="Cactus logo for Eva Nummer"></img>
                 </div>
             </div>
         </div>

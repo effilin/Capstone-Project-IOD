@@ -31,6 +31,7 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
 
 
     const handleClick = () => {
+        console.log("clicked")
         let newValue = "";
         if(value === sideA) {
             newValue = sideB 

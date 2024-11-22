@@ -79,6 +79,7 @@ useEffect(() =>{
    }
    setCardList(cardList)
    setCurrentCards(cardList)
+   console.log(cardList)
 }}, [cards])
 
 
