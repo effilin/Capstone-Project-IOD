@@ -39,7 +39,8 @@ body {
   border-radius: 5px;
 }
 .text {
-  color:var(--font-color)
+  color:var(--font-color);
+  font-family: "Playfair Display", serif;
 }
 
 .form-box {
@@ -91,8 +92,8 @@ body {
   --background-image: url('../../public/images/synthWave.jpg');
   --background-size: 100% 75%;
   --background-position: 50%;
-  --primary-color:#2772db ;
-  --secondary-color:#f57b51;
+  --primary-color:#130244 ;
+  --secondary-color:#7c6a96;
   --font-color:  #fcf2f2;
   --popup-color: #e4c6c6;
 

@@ -116,7 +116,7 @@ export default function Dashboard() {
             <div className="row card-row m-2 d-flex justify-content-evenly flex-wrap">
                 <div className=" shadow card m-2">
                     <div className="card-body">
-                        <h4>Preferences</h4>
+                        <h4 className='text'>Preferences</h4>
                         <form className='m2'>
                             <label htmlFor='themeChoice' className='m-1'>Theme : </label>
                             <select id="themeChoice" name="theme" onChange={handleTheme}>
@@ -176,7 +176,7 @@ export default function Dashboard() {
 
                 <div className=" card shadow  m-2">
                     <div className="card-body ">
-                        <h4>Stats</h4>
+                        <h4 className='text'>Stats</h4>
                         <h6>Puzzle wins:</h6>
                         <h6>Riddle wins:</h6>
                     </div>
@@ -187,7 +187,7 @@ export default function Dashboard() {
             <div className="row card-row m-2 d-flex justify-content-evenly flex-wrap">
                 <div className="card shadow ">
                     <div className="card-body">
-                        <h4>Add Your Own Puzzle</h4>
+                        <h4 className='text'>Add Your Own Puzzle</h4>
                         <form>
                             <div className="m-2">
                                 <label htmlFor="question">Riddle: </label>
