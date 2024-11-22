@@ -11,7 +11,7 @@ export default function NavBar() {
 
 
     return (
-        <div className="container nav-container">
+        <div className="container nav-container shadow ">
             <div className="row navbar"> 
                 <div className="col-2">
                     <button className="btn dropdown-toggle menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</button>

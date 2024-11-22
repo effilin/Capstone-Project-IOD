@@ -106,13 +106,15 @@ export default function Dashboard() {
     return(
     <div>
         <div className="container m-3">
-            <div className="row justify-content-around m-2">
-                {!currentUser.name?
-                <h1 className="col text">Dashboard</h1>:
-                <h1 className='col text'>Dashboard: Welcome Back {currentUser.name}</h1>}
+            <div className="row m-2" >
+                <div className='d-flex justify-content-evenly'>
+                    {!currentUser.name?
+                    <h1 className="text">Dashboard</h1>:
+                    <h1 className='text'>Dashboard: Welcome Back {currentUser.name}</h1>}
+                </div>
             </div>
-            <div className="row card-row m-2">
-                <div className="col col-lg-3 col-md-3 col-sm-8 col-12 card m-2">
+            <div className="row card-row m-2 d-flex justify-content-evenly flex-wrap">
+                <div className=" shadow card m-2">
                     <div className="card-body">
                         <h4>Preferences</h4>
                         <form className='m2'>
@@ -166,22 +168,24 @@ export default function Dashboard() {
                 </div>
 
                 
-                <div className="col col-lg-3 col-md-3 col-sm-8 col-12 card m-2">
+                <div className="card shadow  m-2">
                     <div className="card-body">
                         <Weather/>
                     </div>
                 </div>
 
-                <div className="col col-lg-3 col-md-3 col-sm-8 col-12 card m-2">
-                    <div className="card-body">
-                        <h4>puzzles won:</h4>
+                <div className=" card shadow  m-2">
+                    <div className="card-body ">
+                        <h4>Stats</h4>
+                        <h6>Puzzle wins:</h6>
+                        <h6>Riddle wins:</h6>
                     </div>
                 </div>
 
 
             </div>
-            <div className="row card-row m-2">
-                <div className="col col-lg-4 col-md-4 col-sm-8 col-12 card">
+            <div className="row card-row m-2 d-flex justify-content-evenly flex-wrap">
+                <div className="card shadow ">
                     <div className="card-body">
                         <h4>Add Your Own Puzzle</h4>
                         <form>

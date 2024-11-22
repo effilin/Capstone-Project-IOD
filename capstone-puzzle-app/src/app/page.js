@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <main>
       <div className="main-body container">
-        <div className="row">
-          <div className="col-md-6 col-sm-12">
+        <div className="row d-flex flex-row justify-content-between">
+          <div className="">
             <Welcome />
           </div>
-          <div className="col-md-6 col-sm-12">
+          <div className="">
             <Riddle />
           </div>
         </div>

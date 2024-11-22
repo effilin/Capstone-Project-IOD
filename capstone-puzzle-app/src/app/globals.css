@@ -55,10 +55,16 @@ body {
 
 .footer {
   background-color: var(--secondary-color);
-  width: 99vw;
+  width: 99%;
   border-radius: 10px;
- margin:.5%;
+  margin: .5vw .5vw .5vw 5vw;
 
+}
+
+
+.logo {
+  height: 12vw;
+  width: 12vw;
 }
 
 .arrows {

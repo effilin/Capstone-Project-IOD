@@ -8,13 +8,13 @@ import '../globals.css'
 export default function Footer() {
 
     return (
-        <div className="container text-center footer">
-            <div className="row-sm-12 d-flex flex-row justify-content-around">
+        <div className="container text-center footer shadow ">
+            <div className="row-sm-12 d-flex flex-row justify-content-around ">
                 <div className=" ">
                   <Spotify />
                 </div>
-                <div className="align-self-baseline">
-                    <img src="logo.png" className="float-end" alt="Cactus logo for Eva Nummer"></img>
+                <div className="">
+                    <img src="/images/logo.png" className="float-end align-self-baseline logo" alt="Cactus logo for Eva Nummer"/>
                 </div>
             </div>
         </div>
