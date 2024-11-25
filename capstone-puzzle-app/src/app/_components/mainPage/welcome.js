@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserContext , ThemeContext} from "@/app/context";
 import { POST } from "@/app/api/users/route";
 import { useState, } from "react";
+import '../../globals.css'
 
 
 export default function Welcome() {
@@ -75,16 +76,15 @@ export default function Welcome() {
     if ( currentUser.name === undefined) {
         return (
          <div>
-            <div>
-                <div className="card m-1 main-card">
-                    <div className="card-body">
-                        <h5 className="card-title">Welcome</h5>
-                        <p className="card-text">Please sign-In or sign up for an account!</p>
-                        <button type="button" className="btn btn-primary m-2"data-bs-toggle='modal' data-bs-target='#sign-in-modal'>Sign In</button>
-                        <button type="button" className="btn btn-success m-2" data-bs-toggle='modal' data-bs-target='#sign-up-modal' >Sign Up</button>
-                    </div>
+            <div className="card main-card m-3">
+                <div className="card-body">
+                    <h2 className="card-title text">Welcome</h2>
+                    <h5 className="card-text">Please sign-In or sign up for an account!</h5>
+                    <button type="button" className="btn btn-primary m-2"data-bs-toggle='modal' data-bs-target='#sign-in-modal'>Sign In</button>
+                    <button type="button" className="btn btn-success m-2" data-bs-toggle='modal' data-bs-target='#sign-up-modal' >Sign Up</button>
                 </div>
             </div>
+            
 {/* modal one is for sign up */}
              <div className='modal fade' id="sign-up-modal" tabIndex='-1' aria-labelledby="signupModalLabel" aria-hidden="true">
              <div className='modal-dialog'>
@@ -156,7 +156,7 @@ export default function Welcome() {
         )} else  {
         return(
             <div className=" card m-1 main-card">
-                <h1 className="welcome1">Welcome, {currentUser.name}!</h1>
+                <h2 className="welcome1">Welcome, {currentUser.name}!</h2>
             </div>
 
     )}}

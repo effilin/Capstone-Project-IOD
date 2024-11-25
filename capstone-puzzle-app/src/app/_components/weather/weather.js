@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState, useContext } from "react"
 import { UserContext } from "@/app/context";
+import '../../globals.css';
 
 
 export default function Weather() {
@@ -74,8 +75,7 @@ return (
     {!weather? 
     <div> Loading...</div>:
     <div>
-        <h5>{city}, {state}</h5>
-        <h5> Weather conditions: </h5>
+        <h5 className="text">Weather in: {city}, {state}</h5>
         <p>{conditions}.</p>
         <p>Temperature: {temp} &#x2109;</p>
 

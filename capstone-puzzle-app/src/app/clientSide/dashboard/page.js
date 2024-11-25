@@ -1,5 +1,6 @@
 'use client'
-import '@/styles/dashboard.css';
+import '../../globals.css';
+import '../../../styles/responsive.css'
 import { useEffect, useState } from "react";
 import { useContext } from "react"
 import { PuzzleContext, ThemeContext, UserContext } from "@/app/context"
@@ -105,18 +106,18 @@ export default function Dashboard() {
    console.log(currentUser)
     return(
     <div>
-        <div className="container m-3">
-            <div className="row m-2" >
+        <div className="container">
+            <div className="row" >
                 <div className='d-flex justify-content-evenly'>
                     {!currentUser.name?
                     <h1 className="text">Dashboard</h1>:
                     <h1 className='text'>Dashboard: Welcome Back {currentUser.name}</h1>}
                 </div>
             </div>
-            <div className="row card-row m-2 d-flex justify-content-evenly flex-wrap">
-                <div className=" shadow card m-2">
+            <div className="row dash-container d-flex flex-row justify-content-around flex-wrap">
+                <div className="card top-row-dash main-card">
                     <div className="card-body">
-                        <h4 className='text'>Preferences</h4>
+                        <h3 className='text'>Preferences</h3>
                         <form className='m2'>
                             <label htmlFor='themeChoice' className='m-1'>Theme : </label>
                             <select id="themeChoice" name="theme" onChange={handleTheme}>
@@ -126,7 +127,7 @@ export default function Dashboard() {
                             </select>
                         </form>
                         <div className='m-2'>
-                           {!currentUser.name? <p>Please Sign In</p>:
+                           {!currentUser.name? <p className='text'>Please Sign In</p>:
                            <div>
                                 <div>
                                     <p>Need to update or delete your info?</p>
@@ -168,13 +169,7 @@ export default function Dashboard() {
                 </div>
 
                 
-                <div className="card shadow  m-2">
-                    <div className="card-body">
-                        <Weather/>
-                    </div>
-                </div>
-
-                <div className=" card shadow  m-2">
+                <div className=" card main-card top-row-dash ">
                     <div className="card-body ">
                         <h4 className='text'>Stats</h4>
                         <h6>Puzzle wins:</h6>
@@ -182,10 +177,13 @@ export default function Dashboard() {
                     </div>
                 </div>
 
+                <div className="card main-card ">
+                    <div className="card-body">
+                        <Weather/>
+                    </div>
+                </div>
 
-            </div>
-            <div className="row card-row m-2 d-flex justify-content-evenly flex-wrap">
-                <div className="card shadow ">
+                <div className="card main-card ">
                     <div className="card-body">
                         <h4 className='text'>Add Your Own Puzzle</h4>
                         <form>

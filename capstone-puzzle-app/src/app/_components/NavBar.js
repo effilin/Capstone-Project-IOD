@@ -22,7 +22,7 @@ export default function NavBar() {
                         </ul>
                 </div>
 
-                <div className="col-md-8">
+                <div className="col-8">
                     <h1>Puzzled</h1>
                 </div>
             </div>

@@ -50,13 +50,13 @@ export default function Riddle() {
 
     return(
         <div className="card riddle-card main-card ">
-            <div className="card-body">
-                <h3>Today's Riddle: </h3>
+            <div className="card-body ">
+                <h3 className='text'>Today's Riddle: </h3>
                 <h5>{riddle}</h5>
-                <div className='form-box'>
+                <div className='form-box d-flex justify-content-start'>
                     <form onSubmit={(e) => handleGuess(e, guess)}>
-                        <label className='m-1' htmlFor="guess">Answer: </label>
-                        <input className='m-1' type="text" id="guess" name="guess" value={guess} onChange={(e) => setGuess(e.target.value.toString())}/>
+                        <label className='m-1 form-label text' htmlFor="guess">Answer: </label>
+                        <input className='m-1 form-control' type="text" id="guess" name="guess" value={guess} onChange={(e) => setGuess(e.target.value.toString())}/>
                         <button  type='submit' className='btn btn-primary m-1' >Submit</button>
                     </form>
                 </div>

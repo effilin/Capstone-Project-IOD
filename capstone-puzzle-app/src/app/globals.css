@@ -33,7 +33,7 @@ body {
 }
 .main-body {
   border: 2px solid black ;
-  width: 99rem;
+  flex-wrap: wrap;
   position: relative;
   margin:.5%;
   border-radius: 5px;
@@ -50,7 +50,6 @@ body {
 }
 
 .main-card {
-  margin: 1%;
   background-color: var(--secondary-color);
   box-shadow: var(--box-shadow);
 }
@@ -63,7 +62,6 @@ body {
 
 }
 
-
 .logo {
   height: 12vw;
   width: 12vw;
@@ -73,6 +71,14 @@ body {
   margin: 0;
   padding: 0%;
 }
+a {
+  color: var(--a-color) ;
+}
+a:hover {
+  color: var(--a-color-hover);
+
+}
+
 
 .radioButtons {
   margin-left: 4%;
@@ -83,9 +89,12 @@ body {
   --background-size: cover;
   --background-position: 50%;
   --primary-color:#b6cdbd ;
+  --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#95c49b;
   --font-color: rgb(39, 58, 45);
   --popup-color: #f0f7cc;
+  --a-color: rgb(36, 5, 211);
+  --a-color-hover: rgb(0, 1, 1);
 
 }
 
@@ -93,11 +102,13 @@ body {
   --background-image: url('../../public/images/synthWave.jpg');
   --background-size: 100% 75%;
   --background-position: 50%;
-  --primary-color:#332b49 ;
+  --primary-color:#41375c ;
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#5e51d6;
   --font-color:  #fcf2f2;
   --popup-color: #e4c6c6;
+  --a-color: rgb(160, 149, 221);
+  --a-color-hover: rgb(1, 1, 1);
 
 }
 
@@ -106,9 +117,11 @@ body {
   --background-size: 100% 100%;
   --background-position: 75%;
   --primary-color:#132a4b ;
+  --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#395580;
   --font-color:  #fcf2f2;
   --font-color-hover: #a6b1e1;
   --popup-color: #a6b1e1;
-
+  --a-color: rgb(123, 135, 173);
+  --a-color-hover: rgb(1, 1, 1);
 }
