@@ -66,7 +66,6 @@ body {
   height: 12vw;
   width: 12vw;
 }
-
 .arrows {
   margin: 0;
   padding: 0%;
@@ -76,7 +75,12 @@ a {
 }
 a:hover {
   color: var(--a-color-hover);
-
+}
+#weather-icon {
+ height: 5rem;
+}
+.icon-box {
+  width: 30vw;
 }
 
 
@@ -92,6 +96,7 @@ a:hover {
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#95c49b;
   --font-color: rgb(39, 58, 45);
+  --font-contrast:rgb(211, 247, 216);
   --popup-color: #f0f7cc;
   --a-color: rgb(36, 5, 211);
   --a-color-hover: rgb(0, 1, 1);

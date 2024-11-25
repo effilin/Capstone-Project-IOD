@@ -188,12 +188,12 @@ export default function Dashboard() {
                         <h4 className='text'>Add Your Own Puzzle</h4>
                         <form>
                             <div className="m-2">
-                                <label htmlFor="question">Riddle: </label>
-                                <input className="ms-4" type="text" id="question" name="answer" value={riddle} onChange={(e) => setRiddle(e.target.value.toString())}></input>
+                                <label className='form-label' htmlFor="question">Riddle: </label>
+                                <input className="ms-4 form-control" type="text" id="question" name="answer" value={riddle} onChange={(e) => setRiddle(e.target.value.toString())}></input>
                             </div>
                             <div className="m-2">
-                                <label htmlFor="answer">Answer: </label>
-                                <input className="ms-3"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value.toString())}></input>
+                                <label className='form-label' htmlFor="answer">Answer: </label>
+                                <input className="ms-3 form-control"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value.toString())}></input>
                             </div>
                             <button type="button" className="btn btn-success" onClick={handleSubmit} >Submit</button>
                         </form>

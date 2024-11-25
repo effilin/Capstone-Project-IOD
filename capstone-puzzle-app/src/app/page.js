@@ -24,7 +24,6 @@ export default function Home() {
               The zip code is for weather updates.
               Puzzled is easy to play! Just click the cards to form work words until you solve the puzzle. </h5>
             <h5>Please send feedback or suggestions through the feedback link in the dashboard! I appreciate your advice and feedback!</h5>
-
           </div>
       </div>
     </main>

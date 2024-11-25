@@ -13,6 +13,7 @@ export default function Weather() {
  const [state, setState] = useState();
  const [temp, setTemp] = useState();
  const [error, setError] = useState()
+ const [icon, setIcon] = useState()
 
 
 
@@ -66,22 +67,29 @@ useEffect(() => {
     setCity( weather.location.name)
     setState( weather.location.region);
     setTemp( weather.current.temp_f)
+    setIcon(weather.current.condition.icon)
 }},[weather])
 
 console.log(`weather is${weather}`)
+
 
 return ( 
 <div>
     {!weather? 
     <div> Loading...</div>:
-    <div>
-        <h5 className="text">Weather in: {city}, {state}</h5>
-        <p>{conditions}.</p>
-        <p>Temperature: {temp} &#x2109;</p>
-
+    <div className="d-flex">
+        <div className="weather-box">
+            <h5 className="text">Weather in: {city}, {state}</h5>
+            <p>Conditions: {conditions}.</p>
+            <p>Temperature: {temp} &#x2109;</p>
+            <p>Wind Chill: {weather.current.windchill_f} &#x2109; </p>
+        </div>
+        <div className="icon-box d-flex justify-content-end">
+            <img src={icon} id="weather-icon" className="float-end" alt={conditions}/>
+        </div>
     </div>}
-    <div>
-        <h6>Powered by : </h6> 
+    <div className="d-flex justify-center">
+        <h6 className="me-4">Powered by : </h6> 
         <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
     </div>
 
