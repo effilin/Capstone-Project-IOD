@@ -18,6 +18,15 @@ export default function Home() {
           <div className="">
             <Riddle />
           </div>
+          <div className="main-card card">
+            <h2>About</h2>
+            <p>Thank you for checking out Puzzled! for weather and stats please sign-in or create an account. 
+              The only information needed to create an account is a username an zip code.
+              The zip code is for weather updates.
+              Puzzled is easy to play! Just click the cards to form work words until you solve the puzzle. </p>
+            <p>Please send feedback or suggestions through the feedback link in the dashboard! I appreciate your advice and feedback!</p>
+
+          </div>
         </div>
       </div>
     </main>
