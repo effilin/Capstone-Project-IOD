@@ -1,4 +1,4 @@
- import PuzzleCards from "@/app/_components/puzzle/puzzleCards"
+import PuzzleCards from "@/app/_components/puzzle/puzzleCards";
 
 export default function PuzzlePage() {
 

@@ -1,4 +1,235 @@
 .galaxy {
     background-image: url('../../public/images/page404.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    height:100%;
+    width: 100%;
+    z-index: 1;
     
+}
+
+.nav-container {
+  display: none;
+}
+.footer {
+    display: none;
+}
+.animation-background {
+    position: relative;
+    height:72vw;
+    width: 100%;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.not-found-text {
+    font-family: "Archivo Black", sans-serif;
+    font-size: x-large;
+    color: rgb(238, 205, 156);
+    text-shadow: 3px 3px rgba(231, 102, 102, 0.651);
+    position: relative;
+    text-decoration-line: underline;
+    margin-top: 10vw;
+    z-index: 3;
+}
+.l1, .l2, .l3, .l4, .l5, .l6, .l7, .l8 {
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    background-color: rgb(213, 232, 240);
+    top: 60%;
+    left: 43%;
+}
+
+.home-button{
+    height: fit-content;
+}
+
+span {
+    height: 10vw;
+}
+
+.text-404 {
+    width: 100%;
+}
+
+.word1 {
+    transform: rotate(-10deg) translateY(-20px);
+}
+
+.word2 {
+    transform: rotate(-10deg);
+}
+
+.word3 {
+    transform: rotate(-10deg) translateY(20px) ;
+}
+.l1 {
+    animation-name: shooting-star-1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+.l2 {
+    animation-name: shooting-star-2;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+.l3 {
+    animation-name: shooting-star-3;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+.l4 {
+    animation-name: shooting-star-4;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+.l5 {
+    animation-name: shooting-star-5;
+    animation-duration: 2s;
+    animation-delay: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+
+.l6 {
+    animation-name: shooting-star-6;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+.l7 {
+    animation-name: shooting-star-7;
+    animation-duration: 2s;
+    animation-delay: .6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+.l8 {
+    animation-name: shooting-star-8;
+    animation-duration: 2s;
+    animation-delay: 1.3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;   
+}
+/*  css animation of page not found  */
+
+@keyframes shooting-star-1 {
+    from {
+        transform: scaleX(0);
+        top: 60%;
+        left: 43%;
+        opacity: .5;
+    }
+    to {
+        transform: scaleX(2);
+        top: 0;
+        left: 0;
+        opacity: .8;
+    }
+}
+@keyframes shooting-star-2 {
+    from {
+        transform: scaleY(0);
+        top: 60%;
+        left: 43%;
+        opacity: .5;
+    }
+    to {
+        transform: scaleY(2);
+        top: 100%;
+        left: 100%;
+        opacity: .8;
+    }
+}
+@keyframes shooting-star-3 {
+    from {
+        transform: scaleY(0);
+        top: 60%;
+        left: 43%;
+        opacity: .2;
+    }
+    to {
+        transform: scaleY(2);
+        top: 0%;
+        left: 100%;
+        opacity: .8;
+    }
+}
+@keyframes shooting-star-4 {
+    from {
+        transform: scaleX(0);
+        top: 60%;
+        left: 43%;
+        opacity: .3;
+    }
+    to {
+        transform: scaleX(2);
+        top: 100%;
+        left: 0;
+        opacity: .7;
+    }
+}
+@keyframes shooting-star-5 {
+    from {
+        transform: scaleY(0);
+        top: 40%;
+        left: 50%;
+        opacity: .5;
+    }
+    to {
+        transform: scaleY(2);
+        top: 0%;
+        left: 50%;
+        opacity: .7;
+    }
+}
+@keyframes shooting-star-6 {
+    from {
+        transform: scaleY(0);
+        top: 50%;
+        left: 50%;
+        opacity: .5;
+    }
+    to {
+        transform: scaleY(2);
+        top: 100%;
+        left: 50%;
+        opacity: .7;
+    }
+}
+@keyframes shooting-star-7 {
+    from {
+        transform: scaleX(0);
+        top: 50%;
+        left: 55%;
+        opacity: .2;
+    }
+    to {
+        transform: scaleX(2);
+        top: 50%;
+        left: 100%;
+        opacity: .7;
+    }
+}
+@keyframes shooting-star-7 {
+    from {
+        transform: scaleX(0);
+        top: 50%;
+        left: 45%;
+        opacity: .3;
+    }
+    to {
+        transform: scaleX(2);
+        top: 50%;
+        left: 0%;
+        opacity: .7;
+    }
 }
