@@ -1,12 +1,11 @@
 'use client'
 
-import { Alert } from 'bootstrap/dist/js/bootstrap.bundle.min';
 import'../../globals.css';
 import '../../../styles/responsive.css';
 import { useState, useEffect } from 'react';
 
 
-export default function Riddle() {
+export function Riddle() {
 
     const [riddle, setRiddle] = useState('');
     const [answer, setAnswer] = useState('');
@@ -50,7 +49,7 @@ export default function Riddle() {
     
 
     return(
-        <div className="card main-card top-row-home">
+        <div className="">
             <div className="card-body ">
                 <h3 className='text'>Today's Riddle: </h3>
                 <h5>{riddle}</h5>

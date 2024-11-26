@@ -14,9 +14,6 @@ export default function Home() {
           <div className="">
             <Welcome />
           </div>
-          <div className="">
-            <Riddle />
-          </div>
           <div className="main-card card p-3">
             <h2 className="text">About</h2>
             <h5>Thank you for checking out Puzzled! for weather and stats please sign-in or create an account. 

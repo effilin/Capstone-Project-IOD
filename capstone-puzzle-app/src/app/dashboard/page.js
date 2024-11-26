@@ -1,10 +1,11 @@
 'use client'
-import '../../globals.css';
-import '../../../styles/responsive.css'
+import '../globals.css';
+import '../../styles/responsive.css'
 import { useEffect, useState } from "react";
 import { useContext } from "react"
 import { PuzzleContext, ThemeContext, UserContext } from "@/app/context"
 import Weather from "@/app/_components/weather/weather";
+import {Riddle} from '../_components/mainPage/Riddle'
 
 
 export default function Dashboard() {
@@ -199,6 +200,10 @@ export default function Dashboard() {
                         </form>
                     </div>
                 </div>
+                <div className='card riddle-card'>
+                    <Riddle/>
+                </div>
+
             </div>
         </div>
     </div>
