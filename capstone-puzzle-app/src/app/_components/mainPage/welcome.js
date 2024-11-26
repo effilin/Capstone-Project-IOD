@@ -4,6 +4,7 @@ import { UserContext , ThemeContext} from "@/app/context";
 import { POST } from "@/app/api/users/route";
 import { useState, } from "react";
 import '../../globals.css'
+import '../../../styles/responsive.css'
 
 
 export default function Welcome() {
@@ -76,7 +77,7 @@ export default function Welcome() {
     if ( currentUser.name === undefined) {
         return (
          <div>
-            <div className="card main-card m-3">
+            <div className="card main-card top-row-home">
                 <div className="card-body">
                     <h2 className="card-title text">Welcome</h2>
                     <h5 className="card-text">Please sign-In or sign up for an account!</h5>
@@ -155,7 +156,7 @@ export default function Welcome() {
     </div>
         )} else  {
         return(
-            <div className=" card m-1 main-card">
+            <div className=" card main-card top-row-home">
                 <h2 className="welcome1">Welcome, {currentUser.name}!</h2>
             </div>
 

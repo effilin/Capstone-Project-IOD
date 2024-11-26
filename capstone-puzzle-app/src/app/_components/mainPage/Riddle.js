@@ -2,6 +2,7 @@
 
 import { Alert } from 'bootstrap/dist/js/bootstrap.bundle.min';
 import'../../globals.css';
+import '../../../styles/responsive.css';
 import { useState, useEffect } from 'react';
 
 
@@ -49,7 +50,7 @@ export default function Riddle() {
     
 
     return(
-        <div className="card riddle-card main-card ">
+        <div className="card main-card top-row-home">
             <div className="card-body ">
                 <h3 className='text'>Today's Riddle: </h3>
                 <h5>{riddle}</h5>
@@ -59,6 +60,11 @@ export default function Riddle() {
                         <input className='m-1 form-control' type="text" id="guess" name="guess" value={guess} onChange={(e) => setGuess(e.target.value.toString())}/>
                         <button  type='submit' className='btn btn-primary m-1' >Submit</button>
                     </form>
+                </div>
+                <div className='d-flex justify-content-around'>
+                    <h6>Powered by: 
+                        <a href='https://riddles-api.vercel.app/' alt='link to Riddles API'> Riddles API</a>
+                    </h6>
                 </div>
 
             </div>

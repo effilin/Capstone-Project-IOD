@@ -90,7 +90,9 @@ return (
     </div>}
     <div className="d-flex justify-center">
         <h6 className="me-4">Powered by : </h6> 
-        <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
+        <a href="https://www.weatherapi.com/" title="Free Weather API">
+        <img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"/>
+        </a>
     </div>
 
 </div>

@@ -17,9 +17,7 @@
 /* small screen (576 and above)*/
 @media screen and  (min-width: 576px) { 
 .card {
-    min-width: 25rem;
-    max-width: 40rem;
-    margin: .5vw;
+    margin: 1vw;
 }
 .dash-container {
     width: 100%;
@@ -34,17 +32,14 @@
     height: 25vw;
     max-width: 15.5rem;
     min-width: 15.5rem;
-    margin: .5vw 0;
+    margin: 1vw 0;
 }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and  (min-width: 768px) { 
-    .card {
-        min-width: 25rem;
-        max-width: 50rem;
-        margin: .5vw 0;
-    }
+
     .dash-container {
         width: 100%;
     }
@@ -63,11 +58,69 @@
  }
 
 /* Large devices (desktops, 992px and up) */
-@media screen and  (min-width: 992px) { }
+@media screen and  (min-width: 992px) {
+  
+    .dash-container {
+        width: 100%;
+    }
+    .navbar {
+        min-height: 10rem;  
+    }
+    .nav-container {
+        margin: .5vw;
+    }
+    .main-card {
+        height: 25vw;
+        min-width: 29rem;
+        max-width: 29rem;
+        margin:.5vw 0vw;
+    }
+    .top-row-dash {
+        height: 15vw;
+    }
+ }
 
 /* X-Large devices (large desktops, 1200px and up) */
-@media screen and  (min-width: 1200px) {  }
+@media screen and  (min-width: 1200px) { 
+    .dash-container {
+        width: 100%;
+    }
+    .navbar {
+        min-height: 10rem;  
+    }
+    .nav-container {
+        margin: .5vw;
+    }
+    .main-card {
+        height: 22vw;
+        min-width: 29rem;
+        max-width: 34rem;
+        margin:.5vw 0vw;
+    }
+    .top-row-dash {
+        height: 12vw;
+    }
+ }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
-@media screen and (min-width: 1400px) { }
+@media screen and (min-width: 1400px) {
+    .dash-container {
+        width: 100%;
+    }
+    .navbar {
+        min-height: 10rem;  
+    }
+    .nav-container {
+        margin: .5vw;
+    }
+    .main-card {
+        height: 20vw;
+        min-width: 33rem;
+        max-width: 40rem;
+        margin:.5vw 0vw;
+    }
+    .top-row-dash {
+        height: 10vw;
+    }
+ }
 

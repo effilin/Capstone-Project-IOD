@@ -32,7 +32,6 @@ body {
   background-color: var(--popup-color);
 }
 .main-body {
-  border: 2px solid black ;
   flex-wrap: wrap;
   position: relative;
   margin:.5%;
@@ -46,7 +45,9 @@ body {
 .form-box {
   display: flex;
   justify-content: space-around;
-
+}
+.dropdown-menu {
+  background-color: var(--popup-color);
 }
 
 .main-card {
