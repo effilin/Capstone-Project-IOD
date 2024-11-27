@@ -15,6 +15,12 @@
 .footer {
     display: none;
 }
+.logo {
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    
+}
 .animation-background {
     position: relative;
     height:72vw;
@@ -32,6 +38,42 @@
     text-decoration-line: underline;
     margin-top: 10vw;
     z-index: 3;
+}
+
+.page {
+    animation-name: into-black-hole-1;
+    animation-duration: 7s;
+    animation-delay: calc(var(--index)* 2s);
+    animation-direction: forward;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in; 
+    animation-play-state: paused;
+    
+}
+.not { 
+    animation-name: into-black-hole-2;
+    animation-duration: 7s;
+    animation-delay: calc(var(--index)* 2s);
+    animation-direction: forward;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-play-state: paused; 
+    perspective: 1000;
+    
+}
+.found {
+    animation-name: into-black-hole-3;
+    animation-delay: calc(var(--index)*2s);
+    animation-direction: forward;
+    animation-fill-mode: forwards;
+    animation-duration: 8s;
+    animation-iteration-count: 1;
+    animation-play-state: paused;
+    animation-timing-function: ease-in; 
+    
+    
 }
 .l1, .l2, .l3, .l4, .l5, .l6, .l7, .l8 {
     width: 2px;
@@ -55,15 +97,15 @@ span {
 }
 
 .word1 {
-    transform: rotate(-10deg) translateY(-20px);
+    animation:3s linear 1s 1 forwards grow;
 }
 
 .word2 {
-    transform: rotate(-10deg);
+    animation:3s linear 1s 1 forwards grow;
 }
 
 .word3 {
-    transform: rotate(-10deg) translateY(20px) ;
+    animation:3s linear 1s 1 forwards grow;
 }
 .l1 {
     animation-name: shooting-star-1;
@@ -132,7 +174,7 @@ span {
         transform: scaleX(2);
         top: 0;
         left: 0;
-        opacity: .8;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-2 {
@@ -146,7 +188,7 @@ span {
         transform: scaleY(2);
         top: 100%;
         left: 100%;
-        opacity: .8;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-3 {
@@ -160,7 +202,7 @@ span {
         transform: scaleY(2);
         top: 0%;
         left: 100%;
-        opacity: .8;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-4 {
@@ -174,7 +216,7 @@ span {
         transform: scaleX(2);
         top: 100%;
         left: 0;
-        opacity: .7;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-5 {
@@ -188,7 +230,7 @@ span {
         transform: scaleY(2);
         top: 0%;
         left: 50%;
-        opacity: .7;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-6 {
@@ -202,7 +244,7 @@ span {
         transform: scaleY(2);
         top: 100%;
         left: 50%;
-        opacity: .7;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-7 {
@@ -216,7 +258,7 @@ span {
         transform: scaleX(2);
         top: 50%;
         left: 100%;
-        opacity: .7;
+        opacity: 1;
     }
 }
 @keyframes shooting-star-7 {
@@ -230,6 +272,52 @@ span {
         transform: scaleX(2);
         top: 50%;
         left: 0%;
-        opacity: .7;
+        opacity: 1;
+    }
+}
+/* animated words falling into the black hole */
+
+@keyframes into-black-hole-1 {
+    from {
+        transform: translate(0, 0) rotate(0deg) scale(1) ;
+        opacity: 1;
+    }
+    to{
+        transform: translate(20rem, 35rem) rotate(730deg) scale(0) ;
+        opacity: 0;
+    }
+}
+@keyframes into-black-hole-2 {
+    from {
+        transform: translate(0, 0) rotate(0deg) scale(1) ;
+        opacity: 1;
+    }
+    to {
+        transform: translate(10rem, 30rem) rotate(730deg) scale(0) ;
+        opacity: 0;
+    } 
+}
+@keyframes into-black-hole-3 {
+    from{
+        transform: translate(0, 0) rotate(0deg) scale(1) ;
+        opacity: 1;
+    }
+    to{
+        transform: translate(5rem, 25rem) rotate(730deg) scale(0) ;
+        opacity: .0;
+    }
+}
+@keyframes grow{
+    0% {
+        transform: scale(1);
+        text-shadow: 0px 0px;
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 2rem 2rem rgb(233, 26, 171);
+    }
+    100% {
+        transform: scale(1.05);
+        text-shadow: 0px 0px;
     }
 }
