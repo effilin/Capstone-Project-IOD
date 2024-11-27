@@ -13,6 +13,9 @@ body {
   border-radius: 10px;
  
 }
+.nav-container {
+  display: block;
+}
 .welcome1 {
   color: var(--font-color); 
 }

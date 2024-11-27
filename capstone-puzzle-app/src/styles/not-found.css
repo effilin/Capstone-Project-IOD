@@ -6,6 +6,8 @@
     height:100%;
     width: 100%;
     z-index: 1;
+    animation: 3s ease-out 0s 1 forwards fade-out;
+    animation-play-state: paused;
     
 }
 
@@ -18,8 +20,10 @@
 .logo {
     height: 5rem;
     width: 5rem;
-    position: relative;
-    
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    opacity: .6;
 }
 .animation-background {
     position: relative;
@@ -43,7 +47,7 @@
 .page {
     animation-name: into-black-hole-1;
     animation-duration: 7s;
-    animation-delay: calc(var(--index)* 2s);
+    animation-delay: calc(var(--index)* 2.1s);
     animation-direction: forward;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -54,7 +58,7 @@
 .not { 
     animation-name: into-black-hole-2;
     animation-duration: 7s;
-    animation-delay: calc(var(--index)* 2s);
+    animation-delay: calc(var(--index)* 2.5s);
     animation-direction: forward;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -65,7 +69,7 @@
 }
 .found {
     animation-name: into-black-hole-3;
-    animation-delay: calc(var(--index)*2s);
+    animation-delay: calc(var(--index)*2.6s);
     animation-direction: forward;
     animation-fill-mode: forwards;
     animation-duration: 8s;
@@ -279,31 +283,31 @@ span {
 
 @keyframes into-black-hole-1 {
     from {
-        transform: translate(0, 0) rotate(0deg) scale(1) ;
+        transform: translate(0, 0) rotate(0deg) rotate3d(0, 0, 0, 0deg) scale(1) ;
         opacity: 1;
     }
     to{
-        transform: translate(20rem, 35rem) rotate(730deg) scale(0) ;
+        transform: translate(25rem, 25rem) rotate(730deg) rotate3d(2, 2, 2, 180deg) scale(0) ;
         opacity: 0;
     }
 }
 @keyframes into-black-hole-2 {
     from {
-        transform: translate(0, 0) rotate(0deg) scale(1) ;
+        transform: translate(0, 0) rotate3d(0, 0, 0, 0deg) rotate(0deg) scale(1) ;
         opacity: 1;
     }
     to {
-        transform: translate(10rem, 30rem) rotate(730deg) scale(0) ;
+        transform: translate(10rem, 25rem) rotate3d(1, 2, 1, 120deg) rotate(730deg) scale(0) ;
         opacity: 0;
     } 
 }
 @keyframes into-black-hole-3 {
     from{
-        transform: translate(0, 0) rotate(0deg) scale(1) ;
+        transform: translate(0, 0) rotate(0deg) rotate3d(0, 0, 0, 0deg) scale(1) ;
         opacity: 1;
     }
     to{
-        transform: translate(5rem, 25rem) rotate(730deg) scale(0) ;
+        transform: translate(5rem, 25rem) rotate(730deg) rotate3d(1, 1, 1, 180deg) scale(0) ;
         opacity: .0;
     }
 }
@@ -319,5 +323,13 @@ span {
     100% {
         transform: scale(1.05);
         text-shadow: 0px 0px;
+    }
+}
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }

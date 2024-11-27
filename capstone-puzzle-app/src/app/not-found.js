@@ -1,9 +1,13 @@
 'use client'
-import Link from 'next/link';
+
 import '../styles/not-found.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
  
 export default function NotFoundPage() {
+
+  const [end, setEnd] = useState('paused')
+  const router = useRouter();
 
   useEffect (() => {
     const letters1 = document.querySelectorAll(".page");
@@ -34,6 +38,7 @@ export default function NotFoundPage() {
   }, []);
 
 useEffect (() => {
+
   function startAnimation() {
     const letters1 = document.querySelectorAll(".page");
     const letters2 = document.querySelectorAll(".not");
@@ -61,10 +66,27 @@ useEffect (() => {
   delayedAnimation()
 
 },[]);
+
+useEffect(() => {
+   
+  function endAnimation() {
+
+    const background = document.querySelector(".galaxy");
+    background.style.setProperty("animation-play-state", end) 
+  }
+  endAnimation();
+
+},[end]);
+
+function handleClick(e) {
+  e.preventDefault();
+  setEnd('running');
+  setTimeout(() => {router.push('/')}, 3*1000 );
+}
  
   
   return (
-    <div className='galaxy d-flex flex-row justify-content-around'>
+    <div className='galaxy d-flex justify-content-around'>
       <div className='animation-background'>
           <div className='text-box d-flex flex-row justify-content-around'>
             <div className='d-flex flex-row'>
@@ -88,7 +110,7 @@ useEffect (() => {
               </div>
             </div>
             <div className='d-flex justify-content-end'>
-              <Link className='btn btn-outline-danger home-button' href="/" role='button'>Return Home</Link>
+              <button className='btn btn-outline-danger home-button' role='button' onClick={handleClick}>Return Home</button>
             </div>
           </div>
           
