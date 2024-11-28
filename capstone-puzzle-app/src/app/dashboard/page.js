@@ -116,7 +116,7 @@ export default function Dashboard() {
                 </div>
             </div>
             <div className="row dash-container d-flex flex-row justify-content-around flex-wrap">
-                <div className="card top-row-dash main-card">
+                <div className="card top-row-dash main-card dash-card">
                     <div className="card-body">
                         <h3 className='text'>Preferences</h3>
                         <form className='m2'>
@@ -170,7 +170,7 @@ export default function Dashboard() {
                 </div>
 
                 
-                <div className=" card main-card top-row-dash ">
+                <div className=" card main-card top-row-dash dash-card">
                     <div className="card-body ">
                         <h4 className='text'>Stats</h4>
                         <h6>Puzzle wins:</h6>
@@ -178,13 +178,13 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                <div className="card main-card ">
+                <div className="card main-card dash-card">
                     <div className="card-body">
                         <Weather/>
                     </div>
                 </div>
 
-                <div className="card main-card ">
+                <div className="card main-card dash-card">
                     <div className="card-body">
                         <h4 className='text'>Add Your Own Puzzle</h4>
                         <form>

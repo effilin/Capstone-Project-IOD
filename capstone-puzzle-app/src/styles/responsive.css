@@ -69,7 +69,8 @@
     .nav-container {
         margin: .5vw;
     }
-    .main-card {
+    /* Responsive card in Dashboard */
+    .dash-card {
         height: 25vw;
         min-width: 29rem;
         max-width: 29rem;
@@ -91,7 +92,7 @@
     .nav-container {
         margin: .5vw;
     }
-    .main-card {
+    .dash-card {
         height: 22vw;
         min-width: 29rem;
         max-width: 34rem;
@@ -113,7 +114,7 @@
     .nav-container {
         margin: .5vw;
     }
-    .main-card {
+    .dash-card {
         height: 20vw;
         min-width: 33rem;
         max-width: 40rem;

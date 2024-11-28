@@ -77,10 +77,12 @@ export default function Welcome() {
     if ( currentUser.name === undefined) {
         return (
          <div>
-            <div className="card main-card top-row-home">
-                <div className="card-body">
-                    <h2 className="card-title text">Welcome</h2>
-                    <h5 className="card-text">Please sign-In or sign up for an account!</h5>
+            <div className="m-2">
+                <div className="card-body d-flex flex-column justify-content-center ">
+                    <h2 className="text d-flex justify-content-center">Welcome</h2>
+                    <div className="d-flex flex-column justify-content-around ">
+                       <h5 className="card-text">sign in or sign up for an account!</h5>
+                    </div>
                     <button type="button" className="btn btn-primary m-2"data-bs-toggle='modal' data-bs-target='#sign-in-modal'>Sign In</button>
                     <button type="button" className="btn btn-success m-2" data-bs-toggle='modal' data-bs-target='#sign-up-modal' >Sign Up</button>
                 </div>
@@ -156,7 +158,7 @@ export default function Welcome() {
     </div>
         )} else  {
         return(
-            <div className=" card main-card top-row-home">
+            <div className=" card ">
                 <h2 className="welcome1">Welcome, {currentUser.name}!</h2>
             </div>
 
