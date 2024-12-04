@@ -4,8 +4,8 @@ import '../../styles/responsive.css'
 import { useEffect, useState } from "react";
 import { useContext } from "react"
 import { PuzzleContext, ThemeContext, UserContext } from "@/app/context"
-import Weather from "@/app/_components/weather/weather";
-import {Riddle} from '../_components/mainPage/Riddle'
+import Weather from "@/app/components/weather/weather";
+import {Riddle} from '../components/mainPage/Riddle'
 
 
 export default function Dashboard() {
@@ -89,7 +89,7 @@ export default function Dashboard() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme, stats:{puzzle: currentUser.puzzleStats, riddle: currentUser.RiddleStats} })
+                body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme, puzzleStat: currentUser.puzzleStats, riddleStat: currentUser.riddleStats})
             })
 
             if(res.ok) {
@@ -134,6 +134,7 @@ export default function Dashboard() {
             console.log('OH NO, DID NOT GET IT', error)
         }
    };
+   console.log(currentUser)
 
     return(
     <div className='star-box-dash'>
@@ -161,9 +162,9 @@ export default function Dashboard() {
                            {!currentUser.name? <p className='text2'>Please Sign In</p>:
                            <div>
                                 <div>
-                                    <p className='text2'>Need to update or delete your info?</p>
-                                    <button type="button" className="btn btn-primary m-2"data-bs-toggle='modal' data-bs-target='#update-modal'>Update User</button>
-                                    <button type="button" className="btn btn-primary m-2" onClick={deleteUser}>Delete User</button>
+                                    
+                                    <button type="button" className="btn btn-primary m-1"data-bs-toggle='modal' data-bs-target='#update-modal'>Update User</button>
+                                    <button type="button" className="btn btn-primary m-1" onClick={deleteUser}>Delete User</button>
                                 </div>
                             </div>}
                         </div>
@@ -202,9 +203,9 @@ export default function Dashboard() {
                 
                 <div className=" card main-card top-row-dash dash-card">
                     <div className="card-body ">
-                        <h4 className='text'>Stats</h4>
-                        <h6 className='text2'>Puzzle wins: {!currentUser.puzzleStats?  "no stats available": currentUser.puzzleStats}</h6>
-                        <h6 className='text2'>Riddle wins: {!currentUser.riddleStats? "no stats available": currentUser.riddleStats}</h6>
+                        <h4 className='text'>Stats:</h4>
+                        <h6 className='text2'>Puzzle wins: { currentUser.name? currentUser.puzzleStat : "none available"}</h6>
+                        <h6 className='text2'>Riddle wins: {currentUser.name? currentUser.riddleStat : "none available"}</h6>
                     </div>
                 </div>
 

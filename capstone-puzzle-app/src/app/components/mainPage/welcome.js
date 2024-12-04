@@ -14,6 +14,7 @@ export default function Welcome() {
     const {theme, changeTheme} = useContext(ThemeContext);
    const {currentUser, setCurrentUser} = useContext(UserContext);
 
+ /* New User Function*/
    const handleSubmit = async (e) => {
         e.preventDefault();
         if ( !userName) {
@@ -22,7 +23,7 @@ export default function Welcome() {
         if (!areaCode) {
            return alert( "please enter zip code")
         }
-        setCurrentUser({name: userName, zipCode: areaCode})
+        setCurrentUser({name: userName, zipCode: areaCode, puzzleStat: 0, riddleStat: 0})
         try {
             const res = await fetch('/api/users', {
                 method: 'POST',
@@ -68,7 +69,7 @@ export default function Welcome() {
             console.log('OH NO, DID NOT GET IT', error)
         }
    };
-   
+   console.log(currentUser)
 
 {/* home page when not logged in */}
     if ( currentUser.name === undefined) {

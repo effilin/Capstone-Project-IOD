@@ -5,6 +5,11 @@ import '../../../styles/responsive.css';
 import { useState, useEffect,useContext } from 'react';
 import { UserContext } from '@/app/context';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import RiddleAlert from '../alerts/riddleAlert';
+
+
+
 
 
 export function Riddle() {
@@ -17,25 +22,27 @@ export function Riddle() {
     const {currentUser, setCurrentUser} = useContext(UserContext);
        
 
-    const updateUser = async(e) => {
-        e.preventDefault();
-            if ( !currentUser) {
-                return null;
-            }
-            try{
-                const res = await fetch(`/api/users?name=${encodeURIComponent(currentUser.name)}&zipCode=${encodeURIComponent(areaCode)}`, {
+    const updateUser = async() => {
+        console.log(currentUser.name)
+            if ( !currentUser.name) {
+                
+                toastSignIn()
+            } else{
+                try {
+                let newRiddleStat = currentUser.riddleStat + 1;
+                
+                const res = await fetch(`/api/users?name=${encodeURIComponent(currentUser.name)}&zipCode=${encodeURIComponent(currentUser.zipCode)}&theme=${encodeURIComponent(currentUser.theme)}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme, stats: {puzzle: currentUser.puzzleStats, riddle: currentUser.riddleStats +1 }})
+                    body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme,  puzzleStat: currentUser.puzzleStat, riddleStat: newRiddleStat })
                 })
     
                 if(res.ok) {
                     const newUser = await res.json();
                     setCurrentUser(newUser)
                     console.log(newUser)
-                    alert("user updated")
                 } else {
                     const errorMessage = await res.json();
                     console.log('error', errorMessage)
@@ -44,7 +51,7 @@ export function Riddle() {
             } catch (error) {
                 console.log('OH NO, DID NOT GET IT', error)
             }
-       };
+        }};
 
     useEffect(() => {
 
@@ -71,6 +78,14 @@ export function Riddle() {
     }, [correct]);
 
 
+    const toastAlert = () => {
+        toast(" Almost! Keep trying.")
+    }
+    const toastSignIn = () => {
+        toast(" Sign in to keep track of your stats!")
+    }
+
+
     const handleGuess = async(e, guess) => {
         e.preventDefault()
         const myAnswer = answer.toLowerCase().split(' ');
@@ -88,21 +103,20 @@ export function Riddle() {
             myGuess.map((word) => {
                 myAnswer.includes(word)? correctWords.push(word): console.log("not included")
             })
-            let percent = (correct.length/aLength) *100;
-            console.log(percent);
-            if (percent >= 50 ) {
-                
+            let percent = (correctWords.length/aLength) *100;
+            console.log(`Percent : ${percent}%`);
+            if (percent > 50 ) {
+                setAlertVisible(true)
                 updateUser();
                 setCorrect(+1)
                 
             } else {
-                
+                toastAlert()
             }
         }
         console.log(correct)
-        
+    };
 
-    }
     
 
     return(
@@ -111,14 +125,19 @@ export function Riddle() {
                 <h3 className='text'>Today's Riddle: </h3>
                 <h5 className='text2'>{riddle}</h5>
                 <div className='form-box d-flex justify-content-start'>
+                <ToastContainer position="top-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
                     <form onSubmit={(e) => handleGuess(e, guess)}>
                         <label className='m-1 form-label text2' htmlFor="guess">Answer: </label>
                         <input className='m-1 form-control' type="text" id="guess" name="guess" value={guess} onChange={(e) => setGuess(e.target.value.toString())}/>
                         <button  type='submit' className='btn btn-primary m-1' >Submit</button>
                     </form>
-                    {/* Alert for winning the riddle */}
+                    {/* Alert for winning the riddle */
+                    alertVisible? 
                     <div id="winnerAlert" >
-                    </div>
+                        <RiddleAlert onClose={() => setAlertVisible(false)} />
+                    </div>:
+                    <div></div>
+                     }
                 </div>
                 <div className='d-flex justify-content-around'>
                     <h6>Powered by: 

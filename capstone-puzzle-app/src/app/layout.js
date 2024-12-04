@@ -2,10 +2,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { Inter } from "next/font/google";
 import "./globals.css";
-import BootstrapClient from './_components/BootstrapClient';
+import BootstrapClient from './components/BootstrapClient';
 import { UserProvider, PuzzleProvider, ThemeProvider } from './provider';
-import NavBar from './_components/NavBar';
-import Footer from './_components/Footer';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 
 

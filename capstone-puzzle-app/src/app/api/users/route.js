@@ -45,7 +45,7 @@ export async function GET(request) {
          };
          console.log(user)
         
-         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipCode: user.zipCode, puzzleStats:user.stats.puzzle, riddleStats: user.stats.riddle}), {status: 200})
+         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipCode: user.zipCode, puzzleStat: user.puzzleStat, riddleStat: user.riddleStat}), {status: 200})
          
     } catch (error) {
             return new Response(JSON.stringify({error: 'error retrieving '+ error}))
@@ -84,20 +84,21 @@ export async function PUT(req, res) {
         const newTheme = searchParams.get('theme')
         
         
-        const { name, zipCode, theme, stats: { puzzle, riddle}} = await req.json()
-        console.log( name, zipCode,theme, stats)
+        const { name, zipCode, theme, puzzleStat, riddleStat} = await req.json()
+        console.log( name, zipCode,theme, puzzleStat, riddleStat)
     
-        const updatedUser = await User.updateOne({name: name, zipCode: zipCode },
-            {$set: {name: newName, zipCode: newZipCode, theme: newTheme, stats: {puzzle: puzzle, riddle: riddle}}});
+        const updatedUser = await User.updateOne({name: name, zipCode: zipCode }, 
+            {$set: {name: newName, zipCode: newZipCode, theme: newTheme}, 
+            $inc: {puzzleStat: puzzleStat || 0, riddleStat: riddleStat || 0}});
 
         console.log(updatedUser)
-        return new Response(JSON.stringify({name: newName, zipCode: newZipCode, theme: newTheme, stats: {puzzle: puzzle, riddle: riddle}}),
+        return new Response(JSON.stringify({name: newName, zipCode: newZipCode, theme: newTheme, puzzleStat: puzzleStat , riddleStat: riddleStat}),
          {status: 201,
           headers:{'Content-Type': 'application/json'}
           })
     
         } catch (error){
-            return new Response(JSON.stringify({ error: 'Error creating user' }), {
+            return new Response(JSON.stringify({ error: 'Error updating user' }), {
                 status: 500,
         })}
     }

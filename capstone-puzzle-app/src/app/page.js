@@ -1,6 +1,6 @@
 'use client'
 import './globals.css';
-import Welcome from "./_components/mainPage/welcome";
+import Welcome from "./components/mainPage/welcome";
 import { useEffect, useState } from 'react';
 
 
