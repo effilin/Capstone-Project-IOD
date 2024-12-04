@@ -80,16 +80,16 @@ return (
     <div className="d-flex">
         <div className="weather-box">
             <h5 className="text">Weather in: {city}, {state}</h5>
-            <p>Conditions: {conditions}.</p>
-            <p>Temperature: {temp} &#x2109;</p>
-            <p>Wind Chill: {weather.current.windchill_f} &#x2109; </p>
+            <p className="text2">Conditions: {conditions}.</p>
+            <p className="text2">Temperature: {temp} &#x2109;</p>
+            <p className="text2">Wind Chill: {weather.current.windchill_f} &#x2109; </p>
         </div>
         <div className="icon-box d-flex justify-content-end">
             <img src={icon} id="weather-icon" className="float-end" alt={conditions}/>
         </div>
     </div>}
     <div className="d-flex justify-center">
-        <h6 className="me-4">Powered by : </h6> 
+        <h6 className="me-4 text2">Powered by : </h6> 
         <a href="https://www.weatherapi.com/" title="Free Weather API">
         <img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"/>
         </a>

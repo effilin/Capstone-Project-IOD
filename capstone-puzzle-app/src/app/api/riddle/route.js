@@ -6,7 +6,6 @@ export async function GET(req) {
             cache: 'no-store'
           })
        const riddleData = await riddle.json();
-       console.log(riddleData)
         
        return new Response(JSON.stringify(riddleData), {
         status: 200,

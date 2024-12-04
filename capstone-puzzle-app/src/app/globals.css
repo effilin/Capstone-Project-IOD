@@ -3,20 +3,21 @@
 body {
   background-color: var(--primary-color);
   position: relative;
-  overflow: hidden;
   width: 100%;
   height:100%;
-  z-index: -1;
+  
 }
 .text {
   color:var(--font-color);
   font-family: "Playfair Display", serif;
-  z-index: 4;
+}
+.text2 {
+  color: var(--font-contrast);
 }
 .main-card {
   background-color: var(--secondary-color);
   box-shadow: var(--box-shadow);
-  z-index: 3;
+  
 }
 
 /****************************** Navigation bar and header */
@@ -27,16 +28,14 @@ body {
   font-family: "Archivo Black", sans-serif;;
   color:var(--font-color);
   font-weight: 400;
-  width: 99vw;
+  width: 98%;
   border-radius: 10px;
-  z-index: 3;
+  
  
 }
 .nav-container {
-  position: relative;
-  margin: .5%;
-  justify-content: center;
   display: block;
+  width: 100%;
 }
 
 .menu {
@@ -54,21 +53,28 @@ body {
 
 .pop-box{
   background-color: var(--popup-color);
+  overflow: visible;
 }
+
 .main-body {
   flex-wrap: wrap;
   position: relative;
   margin:.5%;
   border-radius: 5px;
-  z-index: 2;
+ 
 }
-
+.star-box, .star-box-footer,.star-box-dash {
+  position: relative;
+  width: 100%;
+  height:100%;
+  
+}
 .star {
   position: absolute;
   height: 2px;
   width: 2px;
   border-radius: 50%;
-  z-index: 1;
+  z-index: -1;
   background-color: rgb(240, 239, 236);
   opacity: .4;
   animation-name: twinkle;
@@ -80,12 +86,12 @@ body {
 }
 @keyframes twinkle {
   from {
-    transform: rotateX('0deg') scale(1);
+    transform: scale(1);
     background-color: rgb(240, 239, 236);
   }
   to {
-    transform: rotateX('90deg') scale(5);
-    background-color: rgb(84, 55, 243);
+    transform: scale(2);
+    background-color: rgb(229, 253, 172);
   }
 }
 .form-box {
@@ -126,11 +132,14 @@ a:hover {
   margin:.5;
   padding: 1;
   display: block;
-  z-index: 4;
+  
+}
+.foot1 {
+  height: 95%;
 }
 .logo-me {
-  height: 6vw;
-  width: 6w;
+  height: 7vw;
+  width: 7vw;
 }
 .logo {
   height: 2vw;
@@ -147,11 +156,11 @@ a:hover {
   --background-image: url('../../public/images/flowers.png');
   --background-size: cover;
   --background-position: 50%;
-  --primary-color:#b6cdbd91 ;
+  --primary-color:#36503e ;
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
-  --secondary-color:#95c49b;
+  --secondary-color:#72a579a1;
   --font-color: rgb(39, 58, 45);
-  --font-contrast:rgb(211, 247, 216);
+  --font-contrast:rgb(152, 163, 154);
   --popup-color: #f0f7cc;
   --a-color: rgb(36, 5, 211);
   --a-color-hover: rgb(0, 1, 1);
@@ -166,6 +175,7 @@ a:hover {
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#938cd35e;
   --font-color:  #fcf2f2;
+  --font-contrast: rgb(154, 149, 165); 
   --popup-color: #e4c6c6;
   --a-color: rgb(160, 149, 221);
   --a-color-hover: rgb(1, 1, 1);
@@ -178,8 +188,9 @@ a:hover {
   --background-position: 75%;
   --primary-color:#132a4b ;
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
-  --secondary-color:#395580;
+  --secondary-color:#39558086;
   --font-color:  #fcf2f2;
+  --font-contrast: rgb(162, 172, 190);
   --font-color-hover: #a6b1e1;
   --popup-color: #a6b1e1;
   --a-color: rgb(123, 135, 173);

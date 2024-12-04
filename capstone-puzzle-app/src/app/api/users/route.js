@@ -45,7 +45,7 @@ export async function GET(request) {
          };
          console.log(user)
         
-         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipCode: user.zipCode}), {status: 200})
+         return new Response(JSON.stringify({name: user.name, theme: user.theme, zipCode: user.zipCode, puzzleStats:user.stats.puzzle, riddleStats: user.stats.riddle}), {status: 200})
          
     } catch (error) {
             return new Response(JSON.stringify({error: 'error retrieving '+ error}))
@@ -84,13 +84,14 @@ export async function PUT(req, res) {
         const newTheme = searchParams.get('theme')
         
         
-        const { name, zipCode, theme} = await req.json()
+        const { name, zipCode, theme, stats: { puzzle, riddle}} = await req.json()
+        console.log( name, zipCode,theme, stats)
     
         const updatedUser = await User.updateOne({name: name, zipCode: zipCode },
-            {$set: {name: newName, zipCode: newZipCode, theme: newTheme}});
+            {$set: {name: newName, zipCode: newZipCode, theme: newTheme, stats: {puzzle: puzzle, riddle: riddle}}});
 
         console.log(updatedUser)
-        return new Response(JSON.stringify({name: newName, zipCode: newZipCode, theme: newTheme}),
+        return new Response(JSON.stringify({name: newName, zipCode: newZipCode, theme: newTheme, stats: {puzzle: puzzle, riddle: riddle}}),
          {status: 201,
           headers:{'Content-Type': 'application/json'}
           })

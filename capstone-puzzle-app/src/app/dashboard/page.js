@@ -17,10 +17,42 @@ export default function Dashboard() {
     const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
     const {theme, changeTheme} = useContext(ThemeContext);
     const {currentUser, setCurrentUser} = useContext(UserContext);
+    const [starsPresent, setStar] = useState(false);
 
+    useEffect(() => {
 
+        const stars = () => {
+          
+          let numStars = 0;
+    
+          while(numStars <= 1000) {
+          const locationX = Math.round(Math.random() * 100);
+          const locationY = Math.round(Math.random() * 100);
+          const star = document.createElement('div');
+          const canvas = document.querySelector('.star-box-dash');
+          star.classList.add('star');
+          star.style.setProperty("--index", numStars);
+          star.style.setProperty("top", `${locationY}%`);
+          star.style.setProperty("left", `${locationX}%`);
+          canvas.appendChild(star);
+          numStars ++;
+        }}
+    
+        if( starsPresent === true) {
+          console.log("stars out") 
+          const parent = document.querySelector('.star-box-dash')
+          const children = document.querySelectorAll(".star")
+          children.forEach((child) => parent.removeChild(child))
+          setStar(false);
+        } else {
+        setStar(true)
+        stars()
+        }
+      
+    
+      },[])
+/* Add a Riddle submit button */
     const handleSubmit = async (e) => {
-
         e.preventDefault();
         try {
             const res = await fetch('/api/puzzles', {
@@ -30,7 +62,6 @@ export default function Dashboard() {
                 },
                 body: JSON.stringify({number: puzzleNumber + 1, riddle: riddle, answer: answer})
             });
-
         if (res.ok) {
             console.log('puzzle created successfully')
         }
@@ -58,7 +89,7 @@ export default function Dashboard() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme })
+                body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme, stats:{puzzle: currentUser.puzzleStats, riddle: currentUser.RiddleStats} })
             })
 
             if(res.ok) {
@@ -104,9 +135,8 @@ export default function Dashboard() {
         }
    };
 
-   console.log(currentUser)
     return(
-    <div>
+    <div className='star-box-dash'>
         <div className="container">
             <div className="row" >
                 <div className='d-flex justify-content-evenly'>
@@ -120,7 +150,7 @@ export default function Dashboard() {
                     <div className="card-body">
                         <h3 className='text'>Preferences</h3>
                         <form className='m2'>
-                            <label htmlFor='themeChoice' className='m-1'>Theme : </label>
+                            <label htmlFor='themeChoice' className='m-1 text2'>Theme : </label>
                             <select id="themeChoice" name="theme" onChange={handleTheme}>
                                 <option value='garden-view'>Garden View</option>
                                 <option value='synth-wave'> Synth Wave</option>
@@ -128,10 +158,10 @@ export default function Dashboard() {
                             </select>
                         </form>
                         <div className='m-2'>
-                           {!currentUser.name? <p className='text'>Please Sign In</p>:
+                           {!currentUser.name? <p className='text2'>Please Sign In</p>:
                            <div>
                                 <div>
-                                    <p>Need to update or delete your info?</p>
+                                    <p className='text2'>Need to update or delete your info?</p>
                                     <button type="button" className="btn btn-primary m-2"data-bs-toggle='modal' data-bs-target='#update-modal'>Update User</button>
                                     <button type="button" className="btn btn-primary m-2" onClick={deleteUser}>Delete User</button>
                                 </div>
@@ -173,8 +203,8 @@ export default function Dashboard() {
                 <div className=" card main-card top-row-dash dash-card">
                     <div className="card-body ">
                         <h4 className='text'>Stats</h4>
-                        <h6>Puzzle wins:</h6>
-                        <h6>Riddle wins:</h6>
+                        <h6 className='text2'>Puzzle wins: {!currentUser.puzzleStats?  "no stats available": currentUser.puzzleStats}</h6>
+                        <h6 className='text2'>Riddle wins: {!currentUser.riddleStats? "no stats available": currentUser.riddleStats}</h6>
                     </div>
                 </div>
 
@@ -189,11 +219,11 @@ export default function Dashboard() {
                         <h4 className='text'>Add Your Own Puzzle</h4>
                         <form>
                             <div className="m-2">
-                                <label className='form-label' htmlFor="question">Riddle: </label>
+                                <label className='form-label text2' htmlFor="question">Riddle: </label>
                                 <input className="ms-4 form-control" type="text" id="question" name="answer" value={riddle} onChange={(e) => setRiddle(e.target.value.toString())}></input>
                             </div>
                             <div className="m-2">
-                                <label className='form-label' htmlFor="answer">Answer: </label>
+                                <label className='form-label text2' htmlFor="answer">Answer: </label>
                                 <input className="ms-3 form-control"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value.toString())}></input>
                             </div>
                             <button type="button" className="btn btn-success" onClick={handleSubmit} >Submit</button>
