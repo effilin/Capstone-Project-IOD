@@ -108,10 +108,12 @@ export function Riddle() {
             if (percent > 50 ) {
                 setAlertVisible(true)
                 updateUser();
-                setCorrect(+1)
+                setCorrect( correct+1);
+                setGuess('');
                 
             } else {
-                toastAlert()
+                toastAlert();
+                setGuess('');
             }
         }
         console.log(correct)

@@ -3,13 +3,17 @@
     width:20rem;
     height:10rem;
     position: absolute;
-    opacity: 1;
-    overflow: hidden;
+    overflow: visible;
+    box-sizing: content-box;
    
 }
+.alert-box {
+    height: 100%;
+    width: 100%;
+}
 .winner-box {
-    width:20rem;
-    height: 10rem;
+    width:100%;
+    height: 100%;
 }
 
 .crazy-ball {
@@ -21,8 +25,8 @@
     background-color: rgb(235, 231, 234);
     opacity: 1;
     animation-name: bounce;
-    animation-duration: 10s;
-    animation-delay: calc(var(--index)* .4s);
+    animation-duration: 5s;
+    animation-delay: 0;
     animation-direction: both;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in;

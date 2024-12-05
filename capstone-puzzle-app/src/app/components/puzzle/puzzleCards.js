@@ -71,12 +71,23 @@ useEffect(() =>{
  if (cards == '') {
      null
  } else {
-    let sideA = cards.front;
-    let sideB = cards.back;
     const cardList = [];
-   for (let i=0; i < sideA.length; i++) {
-    cardList.push({sideA: sideA.at(i), sideB: sideB.at(i), key: (i + 1), id:(i + 1), activeSide: sideB.at(i) })
-   }
+    let myCards = cards.front
+    const cardCount = myCards.length;
+    console.log(cardCount);
+
+    /* assigning side A and and side B randomly */
+   for (let i=0; i < cardCount; i++) {
+    let random = Math.random();
+    if(random >= .5) {
+        let sideA = cards.front;
+        let sideB = cards.back;
+        cardList.push({sideA: sideA.at(i), sideB: sideB.at(i), key: (i + 1), id:(i + 1), activeSide: sideA.at(i) })
+   } else {
+        let sideA = cards.back;
+        let sideB = cards.front;
+        cardList.push({sideA: sideA.at(i), sideB: sideB.at(i), key: (i + 1), id:(i + 1), activeSide: sideA.at(i) })
+   }}
    setCardList(cardList)
    setCurrentCards(cardList)
    console.log(cardList)
@@ -86,7 +97,7 @@ useEffect(() =>{
 const  handleChange = ( value , id) => {
     let newCards = currentCards.map(card => card.id === id? {...card, activeSide: value}:card)
     setCurrentCards(newCards); 
-    let isCorrect = newCards.every((card) => card.activeSide === card.sideA )
+    let isCorrect = newCards.every((card) => card.activeSide === cards.front )
     if (isCorrect === true) {
         alert("You Win")
     }
@@ -94,6 +105,8 @@ const  handleChange = ( value , id) => {
  }
 
 console.log(currentCards.map((card) => card.activeSide))
+console.log(`this is the card.front ${cards.front}`)
+
 return (
     <div className="container text-center">
         <div className="row">
@@ -116,7 +129,7 @@ return (
         <div className="row">
             <div className="col d-flex flex-wrap">
                 { cardList.length === 0?
-                <h1>Loading</h1>:
+                <h1 className="text">Loading</h1>:
                 cardList.map( card => (
                 <SingleCard {...card} handleChange={handleChange} key={card.key}/> ))
                 }

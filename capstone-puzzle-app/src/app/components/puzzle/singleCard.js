@@ -11,8 +11,8 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
 
 
  useEffect (() => {
-    const random =  Math.random();   
-    random <= .5? setValue(sideA):setValue(sideB)
+       
+    setValue(sideA);
 
 }, []);
 

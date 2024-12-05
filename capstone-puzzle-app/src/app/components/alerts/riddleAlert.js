@@ -43,8 +43,8 @@ export default function RiddleAlert({onClose}) {
   
 
     return (
-        <div className="main-card alert-card">
-            <div className="alert alert-dismissible" role="alert">
+        <div className="alert-card">
+            <div className="alert alert-dismissible alert-box" role="alert">
                <div className="winner-box d-flex justify-content-center align-self-center">
                     <h4 className="text"> Great Job! You won!</h4>
                </div>
