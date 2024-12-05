@@ -36,7 +36,7 @@ export default function PuzzleAlert({onClose}) {
               setBalls(false);
             } else {
             setBalls(true)
-            bouncingStars()
+            collectStars()
         }
 
     },[])

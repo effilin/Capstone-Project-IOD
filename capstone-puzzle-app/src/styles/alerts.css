@@ -36,22 +36,26 @@
     0% {
       transform: translate(0 , 0);
       background-color: rgb(240, 239, 236);
+      opacity: 1;
       
     }
     25% {
         transform: translate(var(--bounce-spotX) , var(--bounce-spotY));
         background-color: rgb(119, 248, 130);
+        opacity: .5;
         
 
     }
     50% {
         transform: translate(var(--bounce-spotX) , var(--bounce-spotY));
         background-color: rgb(38, 147, 236);
+        opacity: 1;
         
     }
     100% {
         transform: translate(0 , 0);
         background-color: rgb(240, 89, 227);
+        opacity: 1;
         
     }
 }

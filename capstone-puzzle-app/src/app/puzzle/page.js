@@ -1,11 +1,15 @@
 'use client'
 import PuzzleCards from "@/app/components/puzzle/puzzleCards";
 import '../globals.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { PuzzleContext } from "../context";
 
 export default function PuzzlePage() {
 
     const [starsPresent, setStar] = useState(false);
+    const [alertVisible, setAlertVisible] = useState(false);
+    const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
+    const [shuffle, setShuffle] = useState(false)
 
     useEffect(() => {
 
@@ -40,12 +44,22 @@ export default function PuzzlePage() {
     
       },[])
 
+      useEffect(() =>{
+        setShuffle(true)
+        setTimeout(() => setShuffle(false), 2000)
+        console.log( `shuffled ${shuffle}`)
+
+      },[puzzleNumber])
+      
     return (
         <div className="star-box-puzzle">
             <div className="container text-center">
                 <div className="col">
                     <div className="row">
+                      {shuffle? 
+                      <h1 className="text">Loading...</h1>:
                       <PuzzleCards />
+                      }
                     </div>
                </div>
             </div>

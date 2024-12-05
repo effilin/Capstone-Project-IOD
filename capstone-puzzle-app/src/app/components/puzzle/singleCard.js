@@ -1,11 +1,13 @@
 'use client'
 import '../../../styles/puzzle.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { useSpring, animated } from "@react-spring/web";
+
 
 export default function SingleCard({sideA , sideB, handleChange, id, activeSide}) {
 
     const [value, setValue] = useState(activeSide)
+    
     
     
 
@@ -13,6 +15,8 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
  useEffect (() => {
        
     setValue(sideA);
+
+    
 
 }, []);
 

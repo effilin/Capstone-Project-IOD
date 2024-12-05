@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import SingleCard from "./singleCard";
 import { useContext } from "react"
 import { PuzzleContext } from "@/app/context"
-import RiddleAlert from "../alerts/riddleAlert";
+import PuzzleAlert from "../alerts/puzzleAlert";
+import { UserContext } from "@/app/context";
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function PuzzleCards() {
 
@@ -15,6 +18,7 @@ export default function PuzzleCards() {
     const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
     const [ correct, setCorrect] = useState(false)
     const [alertVisible, setAlertVisible] = useState(false);
+    const {currentUser, setCurrentUser} = useContext(UserContext);
     
 
     useEffect(() => {
@@ -26,7 +30,7 @@ export default function PuzzleCards() {
     
                 if(res.ok) {
                     const puzzleResult = await res.json();
-                    setPuzzle({riddle: puzzleResult.riddle, answer: puzzleResult.answer })
+                    setPuzzle({riddle: puzzleResult.riddle, answer: puzzleResult.answer, count:puzzleResult.count })
                     setPuzzleNumber(puzzleResult.count)
                     console.log(puzzleResult)
                 } else {
@@ -39,8 +43,42 @@ export default function PuzzleCards() {
        };
        fetchData();
     }, [number]);
-    
 
+    const updateUser = async() => {
+        console.log(currentUser.name)
+            if ( !currentUser.name) {
+                
+                toastSignIn()
+            } else{
+                try {
+                let newPuzzleStat = currentUser.puzzleStat + 1;
+                
+                const res = await fetch(`/api/users?name=${encodeURIComponent(currentUser.name)}&zipCode=${encodeURIComponent(currentUser.zipCode)}&theme=${encodeURIComponent(currentUser.theme)}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({name: currentUser.name, zipCode: currentUser.zipCode, theme: currentUser.theme,  puzzleStat: newPuzzleStat, riddleStat: currentUser.riddleStat })
+                })
+    
+                if(res.ok) {
+                    const newUser = await res.json();
+                    setCurrentUser(newUser)
+                    console.log(newUser)
+                } else {
+                    const errorMessage = await res.json();
+                    console.log('error', errorMessage)
+                    alert("failed to updated")
+                }
+            } catch (error) {
+                console.log('OH NO, DID NOT GET IT', error)
+            }
+        }};
+
+        const toastSignIn = () => {
+            toast(" Sign in to keep track of your stats!")
+        }
+    
 useEffect(() => {
     if (puzzle === '') {
         null
@@ -66,7 +104,7 @@ useEffect(() => {
     let finalResults = results.split('');
 
     setCards({front: cardStock, back: finalResults})
-    }}, [puzzle, number] );
+    }}, [puzzle] );
 
     
 
@@ -94,7 +132,7 @@ useEffect(() =>{
    setCardList(cardList)
    setCurrentCards(cardList)
    console.log(cardList)
-}}, [cards])
+}}, [cards, puzzle])
 
 
 const  handleChange = ( value , id) => {
@@ -104,15 +142,18 @@ const  handleChange = ( value , id) => {
     if (isCorrect === true) {
         setCorrect(true);
         setAlertVisible(true)
+        updateUser()
+        setNumber(number +1)
+        setPuzzleNumber(puzzleNumber +1)
     }
     console.log(`this isCorrect ${isCorrect}`)
 
  };
-
-
+ 
 
 return (
     <div className="container text-center">
+        <ToastContainer position="top-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
         <div className="row">
             <div className="col ">
                 <h5 className="text">Riddle: {puzzle.riddle}</h5> 
@@ -133,16 +174,16 @@ return (
         {/* Alert for winning the riddle */
                     alertVisible? 
                     <div id="winnerAlert" >
-                        <RiddleAlert onClose={() => setAlertVisible(false)} />
+                        <PuzzleAlert onClose={() => setAlertVisible(false)} />
                     </div>:
                     <div></div>
                      }
         <div className="row">
             <div className="col d-flex flex-wrap">
-                { cardList.length === 0?
+                { !puzzle.answer?
                 <h1 className="text">Loading</h1>:
-                cardList.map( card => (
-                <SingleCard {...card} handleChange={handleChange} key={card.key}/> ))
+                    cardList.map( card => (
+                        <SingleCard {...card} handleChange={handleChange} key={card.key}/> ))
                 }
             </div>
        </div>
