@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SingleCard from "./singleCard";
 import { useContext } from "react"
 import { PuzzleContext } from "@/app/context"
+import RiddleAlert from "../alerts/riddleAlert";
 
 export default function PuzzleCards() {
 
@@ -12,6 +13,8 @@ export default function PuzzleCards() {
     const [currentCards, setCurrentCards] = useState([])
     const [number, setNumber] = useState(1)
     const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
+    const [ correct, setCorrect] = useState(false)
+    const [alertVisible, setAlertVisible] = useState(false);
     
 
     useEffect(() => {
@@ -97,15 +100,16 @@ useEffect(() =>{
 const  handleChange = ( value , id) => {
     let newCards = currentCards.map(card => card.id === id? {...card, activeSide: value}:card)
     setCurrentCards(newCards); 
-    let isCorrect = newCards.every((card) => card.activeSide === cards.front )
+    let isCorrect = currentCards.every((card) => card.activeSide[id] === cards.front[id] )
     if (isCorrect === true) {
-        alert("You Win")
+        setCorrect(true);
+        setAlertVisible(true)
     }
-  
- }
+    console.log(`this isCorrect ${isCorrect}`)
 
-console.log(currentCards.map((card) => card.activeSide))
-console.log(`this is the card.front ${cards.front}`)
+ };
+
+
 
 return (
     <div className="container text-center">
@@ -126,6 +130,13 @@ return (
                 </div>
             </div>
         </div>
+        {/* Alert for winning the riddle */
+                    alertVisible? 
+                    <div id="winnerAlert" >
+                        <RiddleAlert onClose={() => setAlertVisible(false)} />
+                    </div>:
+                    <div></div>
+                     }
         <div className="row">
             <div className="col d-flex flex-wrap">
                 { cardList.length === 0?
