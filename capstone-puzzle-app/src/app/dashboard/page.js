@@ -1,6 +1,7 @@
 'use client'
 import '../globals.css';
 import '../../styles/responsive.css'
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react";
 import { useContext } from "react"
 import { PuzzleContext, ThemeContext, UserContext } from "@/app/context"
@@ -53,9 +54,7 @@ export default function Dashboard() {
     
       },[])
 
-    const toastThanks = () => {
-        return
-        toast(" Thanks for the riddle")};
+    const toastThanks = () => toast("Thanks for the riddle");
 
 /* Add a Riddle submit button */
     const handleSubmit = async (e) => {
@@ -74,9 +73,9 @@ export default function Dashboard() {
         } catch (error) {
             console.log('something went wrong')
         };
+        toastThanks();
         setAnswer('');
-        setRiddle('')
-         /* toastThanks() */
+        setRiddle('');
    };
 
    const handleTheme = (e) => {
@@ -148,7 +147,6 @@ export default function Dashboard() {
     return(
     <div className='star-box-dash'>
         <div className="container">
-        <ToastContainer position="top-left" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
             <div className="row" >
                 <div className='d-flex justify-content-evenly'>
                     {!currentUser.name?

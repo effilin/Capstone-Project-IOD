@@ -93,7 +93,7 @@ useEffect(() => {
     }})
 
    setCardList(myCards)
-   setCurrentCards(myCards)
+    /*setCurrentCards(myCards) */
 
 }}, [puzzleInfo])
 
@@ -107,12 +107,13 @@ const  handleChange = ( value , id) => {
 
  useEffect(()=>{
     if (!puzzleInfo.answer) {
-        return
+        return null
     } else {
     const answerString = puzzleInfo.answer.toString();
     const answerUpperCase = answerString.toUpperCase(); /* this is the answer */
     
     let currentActiveSide = currentCards.map((card) => card.activeSide); /* this is the active side */
+    console.log(`Active Side: ${currentActiveSide}`)
 
     let isCorrect = currentActiveSide.every((card, index) => { 
         const matched = card === answerUpperCase[index];
@@ -133,12 +134,11 @@ const  handleChange = ( value , id) => {
 
 }
 
- },[currentCards])
+ },[currentCards.activeSide])
  
 
 return (
     <div className="container text-center">
-        <ToastContainer position="top-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
         <div className="row">
             <div className="col ">
                 <h5 className="text">Riddle: {puzzleInfo.riddle}</h5> 
