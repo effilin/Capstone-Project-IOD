@@ -1,24 +1,13 @@
 'use client'
 import '../../../styles/puzzle.css';
-import { useEffect, useState,useContext } from "react";
+import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 
 
 export default function SingleCard({sideA , sideB, handleChange, id, activeSide}) {
 
     const [value, setValue] = useState(activeSide)
-    
-    
-    
 
-
- useEffect (() => {
-       
-    setValue(sideA);
-
-    
-
-}, []);
 
     const [letterStyle, letterApi] = useSpring(() => ({
          transform: ` rotateY(0deg)`,
@@ -35,7 +24,6 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
 
 
     const handleClick = () => {
-        console.log("clicked")
         let newValue = "";
         if(value === sideA) {
             newValue = sideB 
@@ -53,7 +41,6 @@ export default function SingleCard({sideA , sideB, handleChange, id, activeSide}
                 to:  { transform: `rotateY( ${ newValue === sideA ? 360 : -360 }deg)`},
             })
         handleChange( newValue, id );
-            console.log( newValue , id)
         }
     
        

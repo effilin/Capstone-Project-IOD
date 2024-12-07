@@ -15,11 +15,11 @@ import { UserContext, PuzzleContext, ThemeContext } from "../context";
 }
 
 export const PuzzleProvider = ({children}) => {
-    const [puzzleNumber, setPuzzleNumber] = useState({});
+    const [puzzleInfo, setPuzzleInfo] = useState({});
 
 
     return (
-        <PuzzleContext.Provider value={{puzzleNumber, setPuzzleNumber}}>
+        <PuzzleContext.Provider value={{puzzleInfo, setPuzzleInfo}}>
             {children}
         </PuzzleContext.Provider>
     );

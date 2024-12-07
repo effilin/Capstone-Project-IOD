@@ -1,12 +1,14 @@
 'use client'
 import './globals.css';
 import Welcome from "./components/mainPage/welcome";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { PuzzleContext } from './context';
 
 
 export default function Home() {
 
   const [starsPresent, setStar] = useState(false)
+  const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
 
   useEffect(() => {
 
@@ -37,8 +39,29 @@ export default function Home() {
     setStar(true)
     stars()
     }
-  
 
+  },[])
+
+  useEffect(()=> {
+    const fetchData = async() => {
+      try {
+        const res= await fetch(`/api/puzzles?number=1`, {
+            method: 'GET',
+        });
+
+        if(res.ok) {
+          const puzzleResult = await res.json();
+          console.log(`puzzle fetched ${puzzleResult.riddle}`)
+          setPuzzleInfo({riddle: puzzleResult.riddle, answer: puzzleResult.answer, count:puzzleResult.count, number: 1} )
+        } else {
+          const errorMessage = await res.json();
+          console.log('error', errorMessage)
+        }
+      } catch (error) {
+        console.log('OH NO, DID NOT GET IT', error)
+      }
+    };
+    fetchData()
   },[])
 
 

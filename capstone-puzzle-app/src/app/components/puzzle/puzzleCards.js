@@ -10,48 +10,24 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function PuzzleCards() {
 
-    const [puzzle, setPuzzle] = useState('');
-    const [cards, setCards]= useState('');
-    const [cardList, setCardList] = useState([])
-    const [currentCards, setCurrentCards] = useState([])
+    const [cardList, setCardList] = useState([]); /* this sets the single cards */
+    const [currentCards, setCurrentCards] = useState([]) 
     const [number, setNumber] = useState(1)
-    const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
+    const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
     const [ correct, setCorrect] = useState(false)
     const [alertVisible, setAlertVisible] = useState(false);
     const {currentUser, setCurrentUser} = useContext(UserContext);
-    
 
-    useEffect(() => {
-        const fetchData = async() => {
-                try {
-            const res= await fetch(`/api/puzzles?number=${encodeURIComponent(number)}`, {
-                    method: 'GET',
-                });
-    
-                if(res.ok) {
-                    const puzzleResult = await res.json();
-                    setPuzzle({riddle: puzzleResult.riddle, answer: puzzleResult.answer, count:puzzleResult.count })
-                    setPuzzleNumber(puzzleResult.count)
-                    console.log(puzzleResult)
-                } else {
-                    const errorMessage = await res.json();
-                    console.log('error', errorMessage)
-                }
-            } catch (error) {
-                console.log('OH NO, DID NOT GET IT', error)
-            }
-       };
-       fetchData();
-    }, [number]);
-
+/* update user stats if won */ 
     const updateUser = async() => {
-        console.log(currentUser.name)
+            console.log(currentUser.name)
+        
             if ( !currentUser.name) {
-                
                 toastSignIn()
+                setCurrentUser({puzzleStat: 1})
             } else{
                 try {
-                let newPuzzleStat = currentUser.puzzleStat + 1;
+                let newPuzzleStat = puzzleInfo.number + 1;
                 
                 const res = await fetch(`/api/users?name=${encodeURIComponent(currentUser.name)}&zipCode=${encodeURIComponent(currentUser.zipCode)}&theme=${encodeURIComponent(currentUser.theme)}`, {
                     method: 'PUT',
@@ -64,7 +40,6 @@ export default function PuzzleCards() {
                 if(res.ok) {
                     const newUser = await res.json();
                     setCurrentUser(newUser)
-                    console.log(newUser)
                 } else {
                     const errorMessage = await res.json();
                     console.log('error', errorMessage)
@@ -80,12 +55,14 @@ export default function PuzzleCards() {
         }
     
 useEffect(() => {
-    if (puzzle === '') {
+    
+    if (!puzzleInfo.answer) {
         null
     } else {
 
-        const answer = puzzle.answer.toString();
+        const answer = puzzleInfo.answer.toString();
         const myString = answer.toUpperCase();
+        /* cardStock is Array of the correct answer */
         const cardStock = myString.split('');
         const arrayLength = cardStock.length;
         const spaces = cardStock.filter((x) => x === ' ').length;
@@ -95,60 +72,68 @@ useEffect(() => {
     for (let i=0; i < (arrayLength - spaces); i++) {
         results += chars.charAt(Math.floor(Math.random() * chars.length))
     }
-
     for(let i=0; i < spaces; i++) {
         let spot = Math.floor(Math.random() * arrayLength);
         results = results.slice(0, spot) + ' ' + results.slice(spot);
             }
-
+    /* finalResults is the array of random char */
     let finalResults = results.split('');
 
-    setCards({front: cardStock, back: finalResults})
-    }}, [puzzle] );
-
-    
-
-useEffect(() =>{
- if (cards == '') {
-     null
- } else {
-    const cardList = [];
-    let myCards = cards.front
-    const cardCount = myCards.length;
-    console.log(cardCount);
-
     /* assigning side A and and side B randomly */
-   for (let i=0; i < cardCount; i++) {
-    let random = Math.random();
-    if(random >= .5) {
-        let sideA = cards.front;
-        let sideB = cards.back;
-        cardList.push({sideA: sideA.at(i), sideB: sideB.at(i), key: (i + 1), id:(i + 1), activeSide: sideA.at(i) })
-   } else {
-        let sideA = cards.back;
-        let sideB = cards.front;
-        cardList.push({sideA: sideA.at(i), sideB: sideB.at(i), key: (i + 1), id:(i + 1), activeSide: sideA.at(i) })
-   }}
-   setCardList(cardList)
-   setCurrentCards(cardList)
-   console.log(cardList)
-}}, [cards, puzzle])
+
+    let sideA = cardStock;
+    let sideB = finalResults;
+    let myCards = cardStock.map((card, index) => {
+        return card = {
+          sideA: sideA.at(index), 
+          sideB: sideB.at(index), 
+          key: (index + 1), 
+          id:(index + 1), 
+          activeSide: Math.random() > .5? sideA.at(index): sideB.at(index),
+    }})
+
+   setCardList(myCards)
+   setCurrentCards(myCards)
+
+}}, [puzzleInfo])
 
 
+/* handles the click and the change of current cards */
 const  handleChange = ( value , id) => {
     let newCards = currentCards.map(card => card.id === id? {...card, activeSide: value}:card)
     setCurrentCards(newCards); 
-    let isCorrect = currentCards.every((card) => card.activeSide[id] === cards.front[id] )
+ };
+
+
+ useEffect(()=>{
+    if (!puzzleInfo.answer) {
+        return
+    } else {
+    const answerString = puzzleInfo.answer.toString();
+    const answerUpperCase = answerString.toUpperCase(); /* this is the answer */
+    
+    let currentActiveSide = currentCards.map((card) => card.activeSide); /* this is the active side */
+
+    let isCorrect = currentActiveSide.every((card, index) => { 
+        const matched = card === answerUpperCase[index];
+        console.log (`card ${card} === answer${answerUpperCase[index]} : matched :${matched}`)
+        return matched
+        })
+    console.log(isCorrect)
+    
     if (isCorrect === true) {
         setCorrect(true);
         setAlertVisible(true)
         updateUser()
+       /*
         setNumber(number +1)
         setPuzzleNumber(puzzleNumber +1)
+         */
     }
-    console.log(`this isCorrect ${isCorrect}`)
 
- };
+}
+
+ },[currentCards])
  
 
 return (
@@ -156,7 +141,7 @@ return (
         <ToastContainer position="top-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
         <div className="row">
             <div className="col ">
-                <h5 className="text">Riddle: {puzzle.riddle}</h5> 
+                <h5 className="text">Riddle: {puzzleInfo.riddle}</h5> 
             </div>
             <div className="col-1">
                 <div className="dropdown">
@@ -180,8 +165,8 @@ return (
                      }
         <div className="row">
             <div className="col d-flex flex-wrap">
-                { !puzzle.answer?
-                <h1 className="text">Loading</h1>:
+                { !currentCards?
+                <h1 className="text">Loading....</h1>:
                     cardList.map( card => (
                         <SingleCard {...card} handleChange={handleChange} key={card.key}/> ))
                 }

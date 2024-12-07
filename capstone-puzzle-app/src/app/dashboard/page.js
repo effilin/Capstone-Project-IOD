@@ -4,6 +4,7 @@ import '../../styles/responsive.css'
 import { useEffect, useState } from "react";
 import { useContext } from "react"
 import { PuzzleContext, ThemeContext, UserContext } from "@/app/context"
+import { ToastContainer, toast } from 'react-toastify';
 import Weather from "@/app/components/weather/weather";
 import {Riddle} from '../components/mainPage/Riddle'
 
@@ -14,7 +15,7 @@ export default function Dashboard() {
     const [answer, setAnswer] = useState('');
     const [userName, setUserName] = useState('');
     const [areaCode, setAreaCode] = useState('');
-    const {puzzleNumber, setPuzzleNumber} = useContext(PuzzleContext);
+    const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
     const {theme, changeTheme} = useContext(ThemeContext);
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const [starsPresent, setStar] = useState(false);
@@ -51,6 +52,11 @@ export default function Dashboard() {
       
     
       },[])
+
+    const toastThanks = () => {
+        return
+        toast(" Thanks for the riddle")};
+
 /* Add a Riddle submit button */
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,7 +66,7 @@ export default function Dashboard() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({number: puzzleNumber + 1, riddle: riddle, answer: answer})
+                body: JSON.stringify({number: puzzleInfo.count + 1, riddle: riddle, answer: answer})
             });
         if (res.ok) {
             console.log('puzzle created successfully')
@@ -68,6 +74,9 @@ export default function Dashboard() {
         } catch (error) {
             console.log('something went wrong')
         };
+        setAnswer('');
+        setRiddle('')
+         /* toastThanks() */
    };
 
    const handleTheme = (e) => {
@@ -139,6 +148,7 @@ export default function Dashboard() {
     return(
     <div className='star-box-dash'>
         <div className="container">
+        <ToastContainer position="top-left" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
             <div className="row" >
                 <div className='d-flex justify-content-evenly'>
                     {!currentUser.name?
