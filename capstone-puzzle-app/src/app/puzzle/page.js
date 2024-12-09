@@ -3,13 +3,14 @@ import PuzzleCards from "@/app/components/puzzle/puzzleCards";
 import '../globals.css';
 import { useEffect, useState, useContext } from "react";
 import { PuzzleContext, UserContext } from "../context";
+import PuzzleAlert from "../components/alerts/puzzleAlert";
 
 export default function PuzzlePage() {
 
     const [starsPresent, setStar] = useState(false);
     const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
     const {currentUser, setCurrentUser} = useContext(UserContext);
-    const [shuffle, setShuffle] = useState(false)
+    const [alertVisible, setAlertVisible] = useState(false);
 
     useEffect(() => {
 
@@ -68,33 +69,42 @@ export default function PuzzlePage() {
             }
        };
        fetchData();
+      
        
-    }, [currentUser.puzzleStat]);
+    }, [currentUser.puzzleStat, puzzleInfo.number]);
 
   useEffect(() => {
     console.log("Updated Puzzle Info:", puzzleInfo);
 }, [puzzleInfo]);
     
     
-
-
-
-    /*
-
       useEffect(() =>{
-        setShuffle(true)
-        setTimeout(() => setShuffle(false), 2000)
-        console.log( `shuffled ${shuffle}`)
-
-      },[puzzleNumber])
-      */
+        if (puzzleInfo.alert === true) {
+          setAlertVisible(true)
+          const cleanUp = () =>{
+          let newInfo = {...puzzleInfo};
+          newInfo.alert = false;
+          console.log(newInfo)
+          setPuzzleInfo(newInfo)
+        }
+        
+      cleanUp()
+        }
+      },[puzzleInfo.alert])
+     
       
     return (
         <div className="star-box-puzzle">
             <div className="container text-center">
                 <div className="col">
                     <div className="row">
-                      <PuzzleCards />
+                      {/* Alert for winning the riddle */
+                    alertVisible? 
+                    <div id="winnerAlert" >
+                        <PuzzleAlert onClose={() => setAlertVisible(false)} />
+                    </div>:
+                     <PuzzleCards />
+                     }
                     </div>
                </div>
             </div>

@@ -15,8 +15,9 @@ export default function PuzzleCards() {
     const [number, setNumber] = useState(1)
     const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
     const [ correct, setCorrect] = useState(false)
-    const [alertVisible, setAlertVisible] = useState(false);
+    
     const {currentUser, setCurrentUser} = useContext(UserContext);
+    
 
 /* update user stats if won */ 
     const updateUser = async() => {
@@ -24,7 +25,7 @@ export default function PuzzleCards() {
         
             if ( !currentUser.name) {
                 toastSignIn()
-                setCurrentUser({puzzleStat: 1})
+                setCurrentUser({puzzleStat: puzzleInfo.number +1})
             } else{
                 try {
                 let newPuzzleStat = puzzleInfo.number + 1;
@@ -57,7 +58,7 @@ export default function PuzzleCards() {
 useEffect(() => {
     
     if (!puzzleInfo.answer) {
-        null
+        return console.log( 'waiting on puzzle info')
     } else {
 
         const answer = puzzleInfo.answer.toString();
@@ -93,21 +94,22 @@ useEffect(() => {
     }})
 
    setCardList(myCards)
-    /*setCurrentCards(myCards) */
+   setCurrentCards(myCards)
 
-}}, [puzzleInfo])
+}}, [puzzleInfo.riddle])
 
 
 /* handles the click and the change of current cards */
 const  handleChange = ( value , id) => {
     let newCards = currentCards.map(card => card.id === id? {...card, activeSide: value}:card)
     setCurrentCards(newCards); 
+    
  };
-
-
+console.log(currentCards)
  useEffect(()=>{
-    if (!puzzleInfo.answer) {
-        return null
+   
+    if (currentCards.every((card) => {card.activeSide})) {
+        return console.log( `matching not running`)
     } else {
     const answerString = puzzleInfo.answer.toString();
     const answerUpperCase = answerString.toUpperCase(); /* this is the answer */
@@ -123,18 +125,18 @@ const  handleChange = ( value , id) => {
     console.log(isCorrect)
     
     if (isCorrect === true) {
-        setCorrect(true);
-        setAlertVisible(true)
+
         updateUser()
-       /*
         setNumber(number +1)
-        setPuzzleNumber(puzzleNumber +1)
-         */
+        let newInfo = {...puzzleInfo}
+        newInfo.number + 1;
+        newInfo.alert = true;
+        setPuzzleInfo(newInfo);
+        }
     }
 
-}
-
- },[currentCards.activeSide])
+console.log(puzzleInfo)
+ },[currentCards])
  
 
 return (
@@ -156,13 +158,6 @@ return (
                 </div>
             </div>
         </div>
-        {/* Alert for winning the riddle */
-                    alertVisible? 
-                    <div id="winnerAlert" >
-                        <PuzzleAlert onClose={() => setAlertVisible(false)} />
-                    </div>:
-                    <div></div>
-                     }
         <div className="row">
             <div className="col d-flex flex-wrap">
                 { !currentCards?

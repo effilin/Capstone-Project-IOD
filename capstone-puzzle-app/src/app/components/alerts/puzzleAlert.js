@@ -48,7 +48,7 @@ export default function PuzzleAlert({onClose}) {
                <div className="winner-box d-flex justify-content-center align-self-center">
                     <h4 className="text"> Great Job! You won!</h4>
                </div>
-               <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={onClose}></button>
+               <button type="button" className="btn-close alert-dismissible fade" data-bs-dismiss="alert" aria-label="Close" onClick={onClose}></button>
             </div>
         </div>     
     );
