@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import BootstrapClient from './components/BootstrapClient';
-import { UserProvider, PuzzleProvider, ThemeProvider } from './provider';
+import { UserProvider, PuzzleProvider, ThemeProvider, HelpfulProvider } from './provider';
 import { ToastContainer } from 'react-toastify';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -38,10 +38,12 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
         <UserProvider>
         <PuzzleProvider>
+        <HelpfulProvider>
           <NavBar />
           <ToastContainer position="top-left" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable  theme="light" /> 
             {children}
           <Footer />
+        </HelpfulProvider>
         </PuzzleProvider>
         </UserProvider>
         </ThemeProvider>

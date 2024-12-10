@@ -1,7 +1,7 @@
  'use client'
 
 import { useEffect, useState } from "react"
-import { UserContext, PuzzleContext, ThemeContext } from "../context";
+import { UserContext, PuzzleContext, ThemeContext, HelpfulContext } from "../context";
 
  export const UserProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState({});
@@ -47,6 +47,17 @@ export const ThemeProvider = ({children}) => {
         <ThemeContext.Provider value={{theme, changeTheme}}>
             {children}
         </ThemeContext.Provider>
+    );
+}
+
+export const HelpfulProvider = ({children}) => {
+    const [helpfulMessage, setHelpfulMessage] = useState({});
+
+
+    return (
+        <HelpfulContext.Provider value={{helpfulMessage, setHelpfulMessage}}>
+            {children}
+        </HelpfulContext.Provider>
     );
 }
 

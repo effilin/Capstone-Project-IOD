@@ -1,12 +1,14 @@
 'use client'
 import Spotify from "./mainPage/Spotify"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react";
+import { HelpfulContext } from "../context";
 import '../globals.css'
 
 
 export default function Footer() {
 
     const [starsPresent, setStar] = useState(false);
+    const {helpfulMessage, setHelpfulMessage} = useContext(HelpfulContext);
 
     useEffect(() => {
 
@@ -40,26 +42,35 @@ export default function Footer() {
       },[])
 
     return (
-        <div className="star-box-footer">
-            <div className="footer card main-card d-flex flex-row align-items-end justify-content-between">
-                <div className="foot1 ">
-                  <Spotify />
-                </div>
-                <div className="d-flex flex-column justify-content-center">
+      <div className="star-box-footer">
+        <div className="footer card main-card d-flex flex-row justify-content-between">
+            <div className="foot1 m-1">
+              <Spotify />
+            </div>
+            <div className="d-flex flex-column justify-content-between">
+              
+                  <div className="footer-card card main-card align-self-start p-2">
+                    <h4 className="text">Helpful Hints: </h4>
+                      <h5>{helpfulMessage.message? helpfulMessage.message: `Hello! \u{1F44B}`}</h5>
+                   
+                  </div>
+                  <div className="d-flex flex-column ">
                     <div className="d-flex flex-row">
                        <h6 className="text2">Thank you for visiting puzzled</h6>
                        <p className="mx-2">&#128151;</p>
                        
                     </div>
-                    <div className="d-flex flex-row align-items-center">
+                    <div className="d-flex flex-row ">
                         <h6 className="text2">Connect with me:</h6>
                         <a href="https://www.linkedin.com/in/eva-nummer-20651674/"><img src="/images/Linkedin.png" className="float-end align-self-baseline logo mx-2" alt="LinkedIn logo"/></a>
                         <a href="https://github.com/effilin"><img src="/images/github.png" className="float-end align-self-baseline logo mx-2" alt="Github logo"/></a>
                     </div>
-                </div>
-                <img src="/images/logo.png" className="float-end logo-me" alt="Cactus logo for Eva Nummer"/>
+                 
+              </div>
             </div>
+            <img src="/images/logo.png" className="float-end logo-me align-self-end" alt="Cactus logo for Eva Nummer"/>
         </div>
+      </div>
         
     )
 }

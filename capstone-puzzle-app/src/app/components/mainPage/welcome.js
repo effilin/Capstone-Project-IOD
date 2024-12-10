@@ -1,7 +1,7 @@
 'use client'
 import { useContext } from "react";
-import { UserContext , ThemeContext} from "@/app/context";
-import { POST } from "@/app/api/users/route";
+import { UserContext , ThemeContext, HelpfulContext} from "@/app/context";
+
 import { useState, } from "react";
 import '../../globals.css'
 import '../../../styles/responsive.css'
@@ -13,6 +13,8 @@ export default function Welcome() {
     const [areaCode, setAreaCode] = useState('');
     const {theme, changeTheme} = useContext(ThemeContext);
    const {currentUser, setCurrentUser} = useContext(UserContext);
+   const {helpfulMessage, setHelpfulMessage} = useContext(HelpfulContext);
+   
 
  /* New User Function*/
    const handleSubmit = async (e) => {
@@ -24,6 +26,7 @@ export default function Welcome() {
            return alert( "please enter zip code")
         }
         setCurrentUser({name: userName, zipCode: areaCode, puzzleStat: 0, riddleStat: 0})
+        setHelpfulMessage({message:"Thanks for logging in! Please explore. I highly recommend the page not found!"})
         try {
             const res = await fetch('/api/users', {
                 method: 'POST',
@@ -59,7 +62,7 @@ export default function Welcome() {
             if(res.ok) {
                 const user = await res.json();
                 setCurrentUser(user)
-                console.log(user)
+                setHelpfulMessage({message:"Thanks for coming back! check out the new puzzles! As always check out the page not found! "})
             } else {
                 const errorMessage = await res.json();
                 console.log('error', errorMessage)

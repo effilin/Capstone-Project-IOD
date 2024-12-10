@@ -2,13 +2,14 @@
 import './globals.css';
 import Welcome from "./components/mainPage/welcome";
 import { useEffect, useState, useContext } from 'react';
-import { PuzzleContext } from './context';
+import { PuzzleContext, HelpfulContext } from './context';
 
 
 export default function Home() {
 
   const [starsPresent, setStar] = useState(false)
   const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
+  const {helpfulMessage, setHelpfulMessage} = useContext(HelpfulContext);
 
   useEffect(() => {
 
@@ -16,7 +17,7 @@ export default function Home() {
       
       let numStars = 0;
 
-      while(numStars <= 600) {
+      while(numStars <= 400) {
       const locationX = Math.round(Math.random() * 100);
       const locationY = Math.round(Math.random() * 100);
       const star = document.createElement('div');
@@ -64,6 +65,10 @@ export default function Home() {
     fetchData()
   },[])
 
+  
+
+
+
 
 
   return (
@@ -76,11 +81,12 @@ export default function Home() {
 
             <div>
               <h2 className="text welcome-div">About:</h2>
-              <h5 className='text2'>Thank you for checking out Puzzled! Sign in for weather and stats. 
+              <h5 className='text2'>Thank you for checking out Puzzled! Sign in for weather and  and to track your wins. 
                 The only information needed to create an account is a username and zip code.
                 The zip code is for weather updates.
-                Puzzled is easy to play! Just click the cards to form word until you solve the puzzle. </h5>
-              <h5 className='text2'>Please send feedback or suggestions through the feedback link in the dashboard! I appreciate your advice and feedback!</h5>
+              </h5>
+              <h5 className='text2'>Puzzled is easy to play! Just click the cards to form word until you solve the puzzle. </h5>
+              <h5 className='text2'>Please send feedback or suggestions by connecting with me! I appreciate your advice and feedback!</h5>
           </div>
         </div>
       </div>

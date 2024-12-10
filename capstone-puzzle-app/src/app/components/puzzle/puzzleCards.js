@@ -140,21 +140,14 @@ console.log(puzzleInfo)
  
 
 return (
-    <div className="container text-center">
-        <div className="row">
-            <div className="col ">
-                <h5 className="text">Riddle: {puzzleInfo.riddle}</h5> 
+    <div className="d-flex flex-column">
+        <div className="d-flex flex-row justify-content-around">
+            <div className="">
+                <h4 className="text">Riddle: {puzzleInfo.riddle}</h4> 
             </div>
-            <div className="col-1">
-                <div className="dropdown">
-                    <button className="btn btn-primary dropdown-toggle pop-box" type="button" data-bs-toggle="dropdown" aria-expanded="false" onChange={(e) => setNumber(e.target.value)}>
-                    # {number}
-                    </button>
-                    <ul className="dropdown-menu">
-                      <li className="dropdown-item" onClick={() => setNumber(1)}>1</li>
-                      <li className="dropdown-item" onClick={() => setNumber(2)}>2</li>
-                      <li className="dropdown-item" onClick={() => setNumber(3)}>3</li>
-                    </ul>
+            <div className="">
+                <div className="">
+                    <h4>Puzzle #{puzzleInfo.number}</h4>
                 </div>
             </div>
         </div>

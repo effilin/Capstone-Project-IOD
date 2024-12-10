@@ -19,10 +19,15 @@ export async function POST(req , res) {
         return new Response(JSON.stringify({message:'User created successfully!'}), {status: 201})
     
         } catch (error){
+            if(error.code === 11000) {
+                return new Response(JSON.stringify({ error: 'Username already exists!' }), {
+                    status: 400,
+            })} else {
             return new Response(JSON.stringify({ error: 'Error creating user' }), {
                 status: 500,
         })}
     }
+};
 
 export async function GET(request) {
     
