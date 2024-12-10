@@ -1,7 +1,8 @@
 'use client'
 import { useContext } from "react";
 import { UserContext , ThemeContext, HelpfulContext} from "@/app/context";
-
+import { toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, } from "react";
 import '../../globals.css'
 import '../../../styles/responsive.css'
@@ -14,6 +15,12 @@ export default function Welcome() {
     const {theme, changeTheme} = useContext(ThemeContext);
    const {currentUser, setCurrentUser} = useContext(UserContext);
    const {helpfulMessage, setHelpfulMessage} = useContext(HelpfulContext);
+
+   const toastUserName = () => {
+    toast(" User name is already taken! Please choose a different one!")};
+                                                                     
+   const toastWentWrong = () => {
+    toast("Something went wrong! Please reach out to Eva via LinkedIn")};
    
 
  /* New User Function*/
@@ -25,8 +32,7 @@ export default function Welcome() {
         if (!areaCode) {
            return alert( "please enter zip code")
         }
-        setCurrentUser({name: userName, zipCode: areaCode, puzzleStat: 0, riddleStat: 0})
-        setHelpfulMessage({message:"Thanks for logging in! Please explore. I highly recommend the page not found!"})
+        
         try {
             const res = await fetch('/api/users', {
                 method: 'POST',
@@ -35,12 +41,20 @@ export default function Welcome() {
                 },
                 body: JSON.stringify({name: userName, zipCode: areaCode, theme: theme })
             });
+            console.log(res)
 
      if (res.ok) {
             console.log('user created successfully')
+            setCurrentUser({name: userName, zipCode: areaCode, puzzleStat: 0, riddleStat: 0})
+            setHelpfulMessage({message:`Thanks for logging in ${userName}! Please explore. I highly recommend the page not found!`})
+        } else if (res.status === 400) { 
+        
+            console.log('username already taken')
+           toastUserName()
         }
         } catch (error) {
             console.log('something went wrong')
+            toastWentWrong()
         };
    };   
 
@@ -72,7 +86,6 @@ export default function Welcome() {
             console.log('OH NO, DID NOT GET IT', error)
         }
    };
-   console.log(currentUser)
 
 {/* home page when not logged in */}
     if ( currentUser.name === undefined) {

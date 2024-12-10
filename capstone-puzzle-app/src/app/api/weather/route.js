@@ -6,7 +6,7 @@ export async function POST(req) {
     const { zipCode} = await req.json();
 
     const zipCodeCurrent = zipCode || 23228;
-    console.log(zipCodeCurrent)
+    
     const weatherKey = process.env.WEATHER_KEY;
     try {
        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${encodeURIComponent(weatherKey)}&q=${encodeURIComponent(zipCodeCurrent)}`)

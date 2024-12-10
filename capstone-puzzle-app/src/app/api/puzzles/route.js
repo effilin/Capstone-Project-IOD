@@ -10,11 +10,11 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
     await dbConnect();
     try {
-        console.log(request.nextUrl.searchParams)
+        
         const searchParams = request.nextUrl.searchParams
 
         const number = searchParams.get('number')
-        console.log( `decompose searchParams.get('number'): ${number}`)
+        
 
         if(!number ) {
             return new Response(JSON.stringify({error: 'number not received'}))
@@ -27,7 +27,7 @@ export async function GET(request) {
          if (!puzzle) {
             return new Response(JSON.stringify({error: 'puzzle not found'}), {status: 404})
          };
-         console.log(puzzle, count)
+         
         
          return new Response(JSON.stringify({riddle: puzzle.riddle, answer: puzzle.answer, count: count}), {status: 200})
          
@@ -47,7 +47,7 @@ export async function POST(req , res) {
         const newPuzzle = new Puzzle({number, riddle, answer});
         
         await newPuzzle.save()
-        console.log(newPuzzle)
+        
         return new Response(JSON.stringify({message:'Puzzle created successfully!'}), {status: 201})
     
         } catch (error){

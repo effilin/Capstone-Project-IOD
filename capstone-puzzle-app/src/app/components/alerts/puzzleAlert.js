@@ -43,7 +43,6 @@ export default function PuzzleAlert({onClose}) {
             }}
         
             if( ballsPresent === true) {
-              console.log("balls launch") 
               const parent = document.querySelector('.winner-box')
               const children = document.querySelectorAll(".crazy-ball")
               children.forEach((child) => parent.removeChild(child))

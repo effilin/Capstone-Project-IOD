@@ -105,7 +105,7 @@ const  handleChange = ( value , id) => {
     setCurrentCards(newCards); 
     
  };
-console.log(currentCards)
+
  useEffect(()=>{
    
     if (currentCards.every((card) => {card.activeSide})) {
@@ -115,14 +115,11 @@ console.log(currentCards)
     const answerUpperCase = answerString.toUpperCase(); /* this is the answer */
     
     let currentActiveSide = currentCards.map((card) => card.activeSide); /* this is the active side */
-    console.log(`Active Side: ${currentActiveSide}`)
 
     let isCorrect = currentActiveSide.every((card, index) => { 
         const matched = card === answerUpperCase[index];
-        console.log (`card ${card} === answer${answerUpperCase[index]} : matched :${matched}`)
         return matched
         })
-    console.log(isCorrect)
     
     if (isCorrect === true) {
 
@@ -135,7 +132,6 @@ console.log(currentCards)
         }
     }
 
-console.log(puzzleInfo)
  },[currentCards])
  
 
@@ -151,8 +147,8 @@ return (
                 </div>
             </div>
         </div>
-        <div className="row">
-            <div className="col d-flex flex-wrap">
+        <div className="">
+            <div className=" d-flex flex-wrap">
                 { !currentCards?
                 <h1 className="text">Loading....</h1>:
                     cardList.map( card => (

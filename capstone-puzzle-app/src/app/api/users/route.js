@@ -11,33 +11,34 @@ export async function POST(req , res) {
         try {
         
         const { name, zipCode, theme} = await req.json()
+        const existingUser = await User.findOne({name: name});
+
+        if (existingUser) {
+            return new Response(JSON.stringify({ error: 'User name already taken' }), {
+                status: 400,
+        })
+        }
     
         const newUser = new User({name, zipCode, theme});
     
         await newUser.save()
-        console.log(newUser)
+        
         return new Response(JSON.stringify({message:'User created successfully!'}), {status: 201})
     
         } catch (error){
-            if(error.code === 11000) {
-                return new Response(JSON.stringify({ error: 'Username already exists!' }), {
-                    status: 400,
-            })} else {
             return new Response(JSON.stringify({ error: 'Error creating user' }), {
                 status: 500,
         })}
     }
-};
 
 export async function GET(request) {
     
     try {
-        console.log(request.nextUrl.searchParams)
+        
         const searchParams = request.nextUrl.searchParams
        
         const name= searchParams.get('name')
         const zipCode = searchParams.get('zipCode')
-        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipCode'): ${zipCode}`)
 
         if(!name || !zipCode) {
             return new Response(JSON.stringify({error: 'name or zip code not received'}))
@@ -48,7 +49,6 @@ export async function GET(request) {
          if (!user) {
             return new Response(JSON.stringify({error: 'user not found'}), {status: 404})
          };
-         console.log(user)
         
          return new Response(JSON.stringify({name: user.name, theme: user.theme, zipCode: user.zipCode, puzzleStat: user.puzzleStat, riddleStat: user.riddleStat}), {status: 200})
          
@@ -60,12 +60,11 @@ export async function GET(request) {
 export async function DELETE(request) {
     
     try {
-        console.log(request.nextUrl.searchParams)
+        
         const searchParams = request.nextUrl.searchParams
        
         const name= searchParams.get('name')
         const zipCode = searchParams.get('zipCode')
-        console.log( `decompose searchParams.get('name'): ${name}, decompose request.nextUrl.searchParams.get('zipCode'): ${zipCode}`)
 
         if(!name || !zipCode) {
             return new Response(JSON.stringify({error: 'name or zip code not received'}))
@@ -81,7 +80,7 @@ export async function DELETE(request) {
 export async function PUT(req, res) {
     
     try {
-        console.log(req.nextUrl.searchParams)
+        
         const searchParams = req.nextUrl.searchParams
        
         const newName= searchParams.get('name')
@@ -90,13 +89,13 @@ export async function PUT(req, res) {
         
         
         const { name, zipCode, theme, puzzleStat, riddleStat} = await req.json()
-        console.log( name, zipCode,theme, puzzleStat, riddleStat)
+       
     
         const updatedUser = await User.updateOne({name: name, zipCode: zipCode }, 
             {$set: {name: newName, zipCode: newZipCode, theme: newTheme}, 
             $inc: {puzzleStat: puzzleStat || 0, riddleStat: riddleStat || 0}});
 
-        console.log(updatedUser)
+        
         return new Response(JSON.stringify({name: newName, zipCode: newZipCode, theme: newTheme, puzzleStat: puzzleStat , riddleStat: riddleStat}),
          {status: 201,
           headers:{'Content-Type': 'application/json'}

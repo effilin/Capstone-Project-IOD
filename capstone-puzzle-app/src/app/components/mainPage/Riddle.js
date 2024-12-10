@@ -23,7 +23,6 @@ export function Riddle() {
        
 
     const updateUser = async() => {
-        console.log(currentUser.name)
             if ( !currentUser.name) {
                 
                 toastSignIn()
@@ -42,7 +41,7 @@ export function Riddle() {
                 if(res.ok) {
                     const newUser = await res.json();
                     setCurrentUser(newUser)
-                    console.log(newUser)
+                    
                 } else {
                     const errorMessage = await res.json();
                     console.log('error', errorMessage)
@@ -58,7 +57,6 @@ export function Riddle() {
         const getRiddle = async() => {
             try {
                 const newRiddle = await fetch('/api/riddle')
-                console.log(newRiddle)
                 const data = await newRiddle.json()
                 console.log(data)
      
@@ -90,13 +88,9 @@ export function Riddle() {
         e.preventDefault()
         const myAnswer = answer.toLowerCase().split(' ');
         const myGuess = guess.toLowerCase().split(' ');
-        const length= myGuess.length;
         const aLength = myAnswer.length;
         let correctWords = [];
 
-        console.log(myAnswer);
-        console.log(myGuess);
-        console.log(length);
         if(!guess) {
             alert('please enter your guess')
         }else{
@@ -116,7 +110,6 @@ export function Riddle() {
                 setGuess('');
             }
         }
-        console.log(correct)
     };
 
     

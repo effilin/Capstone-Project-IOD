@@ -7,37 +7,50 @@ export default function RiddleAlert({onClose}) {
     const [ballsPresent, setBalls] = useState(false)
 
     useEffect(()=>{
-
-        const bouncingStars = () => {
-            let numBalls = 0;
         
-              while(numBalls <= 100) {
-              const locationX = Math.round(Math.random() * 100);
-              const locationY = Math.round(Math.random() * 100);
-              const bounceSpotX = Math.round(Math.random() * 100);
-              const bounceSpotY = Math.round(Math.random() * 100)
-              const ball = document.createElement('div');
-              const canvas = document.querySelector('.winner-box');
-              ball.classList.add('crazy-ball');
-              ball.style.setProperty("--index", numBalls);
-              ball.style.setProperty('--bounce-spotX', `${bounceSpotX}vw`)
-              ball.style.setProperty('--bounce-spotY', `${bounceSpotY}vw`)
-              ball.style.setProperty("top", `${locationY}%`);
-              ball.style.setProperty("left", `${locationX}%`);
-              canvas.appendChild(ball);
-              numBalls ++;
-            }}
-        
-            if( ballsPresent === true) {
-              console.log("stars out") 
-              const parent = document.querySelector('.winner-box')
-              const children = document.querySelectorAll(".crazy-ball")
-              children.forEach((child) => parent.removeChild(child))
-              setBalls(false);
-            } else {
-            setBalls(true)
-            bouncingStars()
-        }
+            const shootBalls = () => {
+                let numBalls = 0;
+            
+                  while(numBalls <= 500) {
+                    let locationX
+                    let locationY
+                    let X = Math.random();
+                    let Y = Math.random();
+                    if ( X < .5) {
+                        locationX = Math.random() * -100;
+                       } else { 
+                        locationX = Math.random() * 100; 
+                       }
+    
+                    if( Y < .5) {
+                        locationY = Math.random() * -100;
+                       } else { 
+                        locationY = Math.random() * 100; 
+                       }
+                  const red = Math.floor(Math.random() * 256);
+                  const green = Math.floor(Math.random() * 256);
+                  const blue = Math.floor(Math.random() * 256);
+                  const ball = document.createElement('div');
+                  const canvas = document.querySelector('.winner-box');
+                  ball.classList.add('crazy-ball');
+                  ball.style.setProperty("--index", numBalls);
+                  ball.style.setProperty('--bounce-spotX', `${locationX}vw`)
+                  ball.style.setProperty('--bounce-spotY', `${locationY}vw`)
+                  ball.style.setProperty('--color', `rgb(${red}, ${green}, ${blue})`)
+                 
+                  canvas.appendChild(ball);
+                  numBalls ++;
+                }}
+            
+                if( ballsPresent === true) {
+                  const parent = document.querySelector('.winner-box')
+                  const children = document.querySelectorAll(".crazy-ball")
+                  children.forEach((child) => parent.removeChild(child))
+                  setBalls(false);
+                } else {
+                setBalls(true)
+                shootBalls()
+            }
 
     },[])
   
