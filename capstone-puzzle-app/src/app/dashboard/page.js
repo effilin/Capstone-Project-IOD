@@ -217,21 +217,21 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                <div className="card main-card dash-card">
+                <div className="card main-card dash-card m-1">
                     <div className="card-body">
                         <Weather/>
                     </div>
                 </div>
 
-                <div className="card main-card dash-card">
+                <div className="card main-card dash-card mt-1">
                     <div className="card-body">
                         <h4 className='text'>Add Your Own Puzzle</h4>
                         <form>
-                            <div className="m-2">
+                            <div className="mt-2">
                                 <label className='form-label text2' htmlFor="question">Riddle: </label>
                                 <input className="ms-4 form-control" type="text" id="question" name="answer" value={riddle} onChange={(e) => setRiddle(e.target.value.toString())}></input>
                             </div>
-                            <div className="m-2">
+                            <div className="mt-2">
                                 <label className='form-label text2' htmlFor="answer">Answer: </label>
                                 <input className="ms-3 form-control"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value.toString())}></input>
                             </div>
@@ -239,7 +239,7 @@ export default function Dashboard() {
                         </form>
                     </div>
                 </div>
-                <div className='card riddle-card'>
+                <div className='card riddle-card mt-2'>
                     <Riddle/>
                 </div>
 

@@ -123,6 +123,9 @@ a:hover {
 .radioButtons {
   margin-left: 4%;
 }
+.top-row-dash {
+  height: fit-content;
+}
 /************************* Footer ***/
 .footer {
   background-color: var(--secondary-color);
@@ -159,8 +162,8 @@ a:hover {
   --primary-color:#36503e ;
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#72a579a1;
-  --font-color: rgb(39, 58, 45);
-  --font-contrast:rgb(152, 163, 154);
+  --font-color: rgb(26, 26, 26);
+  --font-contrast:rgb(17, 17, 17);
   --popup-color: #f0f7cc;
   --a-color: rgb(36, 5, 211);
   --a-color-hover: rgb(0, 1, 1);
@@ -190,7 +193,7 @@ a:hover {
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#39558086;
   --font-color:  #fcf2f2;
-  --font-contrast: rgb(162, 172, 190);
+  --font-contrast: rgb(20, 20, 20);
   --font-color-hover: #a6b1e1;
   --popup-color: #a6b1e1;
   --a-color: rgb(123, 135, 173);
