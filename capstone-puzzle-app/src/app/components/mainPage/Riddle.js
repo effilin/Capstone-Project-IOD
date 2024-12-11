@@ -117,7 +117,7 @@ export function Riddle() {
     return(
         <div className="">
             <div className="card-body ">
-                <h3 className='text'>Today's Riddle: </h3>
+                <h3 className='text'>Today&apos;s Riddle: </h3>
                 <h5 className='text2'>{riddle}</h5>
                 <div className='form-box d-flex justify-content-start'>
                 <ToastContainer position="top-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 

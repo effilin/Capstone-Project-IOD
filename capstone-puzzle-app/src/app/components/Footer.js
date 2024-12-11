@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { HelpfulContext } from "../context";
 import '../globals.css'
 import '../../styles/responsive.css'
+import Image from "next/image";
 
 
 export default function Footer() {
@@ -67,7 +68,7 @@ export default function Footer() {
                     </div>
                   </div>
             </div>
-            <img src="/images/logo.png" className="float-end logo-me align-self-end" alt="Cactus logo for Eva Nummer"/>
+            <img src="/images/logo.png" className="float-end logo-me align-self-end" alt="Cactus logo for Eva Nummer" />
         </div>
       </div>
         

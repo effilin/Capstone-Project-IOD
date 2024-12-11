@@ -206,5 +206,21 @@
     .top-row-dash {
         height: 10vw;
     }
+    /* footer responsive styling */
+    .footer{
+        justify-content: space-between;
+     }
+     .logo-me {
+        height: 8vw;
+        width: 8vw;
+     }
+     .logo {
+         height: 3vw;
+         width: 3vw;
+       }
+     .thanks-text {
+         margin-top: 1rem;
+         justify-content: center;
+     }
  }
 

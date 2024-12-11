@@ -143,7 +143,7 @@ return (
             </div>
             <div className="">
                 <div className="">
-                    <h4>Puzzle #{puzzleInfo.number}</h4>
+                    <h4 className="text">Puzzle #{puzzleInfo.number}</h4>
                 </div>
             </div>
         </div>
