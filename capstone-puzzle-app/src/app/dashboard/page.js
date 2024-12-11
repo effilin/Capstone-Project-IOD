@@ -103,7 +103,6 @@ export default function Dashboard() {
             if(res.ok) {
                 const newUser = await res.json();
                 setCurrentUser(newUser)
-                console.log(newUser)
                 alert("user updated")
             } else {
                 const errorMessage = await res.json();
@@ -133,7 +132,7 @@ export default function Dashboard() {
             if(res.ok) {
                 const user = await res.json();
                 setCurrentUser(user)
-                console.log(user)
+                
             } else {
                 const errorMessage = await res.json();
                 console.log('error', errorMessage)
@@ -142,7 +141,7 @@ export default function Dashboard() {
             console.log('OH NO, DID NOT GET IT', error)
         }
    };
-   console.log(currentUser)
+   
 
     return(
     <div className='star-box-dash'>
@@ -235,7 +234,7 @@ export default function Dashboard() {
                                 <label className='form-label text2' htmlFor="answer">Answer: </label>
                                 <input className="ms-3 form-control"type="text" id="answer" name="answer" value={answer} onChange={(e) => setAnswer(e.target.value.toString())}></input>
                             </div>
-                            <button type="button" className="btn btn-success" onClick={handleSubmit} >Submit</button>
+                            <button type="button" className="btn btn-primary m-2" onClick={handleSubmit} >Submit</button>
                         </form>
                     </div>
                 </div>

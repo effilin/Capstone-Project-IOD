@@ -27,7 +27,7 @@
     opacity: 1;
     animation-name: bounce;
     animation-duration: 5s;
-    animation-delay:calc(var(--index) *.6s);
+    animation-delay:calc(var(--index) *.1s);
     animation-direction: both;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in;

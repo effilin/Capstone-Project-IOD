@@ -31,7 +31,6 @@ export default function Weather() {
                     },
                  body: JSON.stringify({ zipCode: zipCodeCurrent })
                 });
-                console.log(res)
      
                 const data = await res.json()
                 if(isMounted) {
@@ -69,8 +68,6 @@ useEffect(() => {
     setTemp( weather.current.temp_f)
     setIcon(weather.current.condition.icon)
 }},[weather])
-
-console.log(`weather is${weather}`)
 
 
 return ( 

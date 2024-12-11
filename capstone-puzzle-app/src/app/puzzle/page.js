@@ -1,8 +1,10 @@
 'use client'
 import PuzzleCards from "@/app/components/puzzle/puzzleCards";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 import '../globals.css';
 import { useEffect, useState, useContext } from "react";
-import { PuzzleContext, UserContext } from "../context";
+import { PuzzleContext, UserContext, HelpfulContext } from "../context";
 import PuzzleAlert from "../components/alerts/puzzleAlert";
 
 export default function PuzzlePage() {
@@ -11,6 +13,10 @@ export default function PuzzlePage() {
     const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const [alertVisible, setAlertVisible] = useState(false);
+    const {helpfulMessage, setHelpfulMessage} = useContext(HelpfulContext);
+    const [allSolved, setAllSolved] = useState(false);
+
+    const toastComeBack = () => toast("Please come back for new puzzles");
 
     useEffect(() => {
 
@@ -48,9 +54,16 @@ export default function PuzzlePage() {
       useEffect(() => {
 
         let number = currentUser.puzzleStat? currentUser.puzzleStat: 1;
-        console.log(`puzzle context #: ${number}`)
+        setAllSolved(false);
+        console.log(`number${number}`)
+        
 
         const fetchData = async() => {
+          if (number > puzzleInfo.count) {
+            setAllSolved(true);
+            toastComeBack();
+            setHelpfulMessage({message:" You solved all the current puzzle's please come back next time for new puzzles!"});
+          }
                 try {
             const res= await fetch(`/api/puzzles?number=${encodeURIComponent(number)}`, {
                     method: 'GET',
@@ -58,7 +71,7 @@ export default function PuzzlePage() {
     
                 if(res.ok) {
                     const puzzleResult = await res.json();
-                    console.log(`puzzle fetched ${puzzleResult.riddle}`)
+                    
                     setPuzzleInfo({riddle: puzzleResult.riddle, answer: puzzleResult.answer, count:puzzleResult.count, number: number} )
                 } else {
                     const errorMessage = await res.json();
@@ -73,9 +86,9 @@ export default function PuzzlePage() {
        
     }, [currentUser.puzzleStat, puzzleInfo.number]);
 
-  useEffect(() => {
-    console.log("Updated Puzzle Info:", puzzleInfo);
-}, [puzzleInfo]);
+   useEffect(() => {
+    setHelpfulMessage({message:"Click the cards to try and form the answer!"})
+}, [allSolved]); 
     
     
       useEffect(() =>{
@@ -84,7 +97,6 @@ export default function PuzzlePage() {
           const cleanUp = () =>{
           let newInfo = {...puzzleInfo};
           newInfo.alert = false;
-          console.log(newInfo)
           setPuzzleInfo(newInfo)
         }
         
@@ -102,7 +114,7 @@ export default function PuzzlePage() {
                     alertVisible? 
                     <div id="winnerAlert" >
                         <PuzzleAlert onClose={() => setAlertVisible(false)} />
-                    </div>:
+                    </div>: allSolved? <h1> Until Next Time!</h1>:
                      <PuzzleCards />
                      }
                     </div>

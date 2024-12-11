@@ -11,6 +11,23 @@
     .nav-container {
         margin: .5vw;
     }
+     /* footer responsive styling */
+    .footer{
+       justify-content: center;
+    }
+    .logo-me {
+       height: 20vw;
+       width: 20vw;
+    }
+    .logo {
+        height: 8vw;
+        width: 8vw;
+      }
+    .thanks-text {
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
 }
 
 
@@ -34,6 +51,22 @@
     min-width: 15.5rem;
     margin: 1vw 0;
 }
+ /* footer responsive styling */
+ .footer{
+    justify-content: center;
+ }
+ .logo-me {
+    height: 15vw;
+    width: 15vw;
+ }
+ .logo {
+     height: 6vw;
+     width: 6vw;
+   }
+ .thanks-text {
+     margin-top: 1rem;
+     justify-content: center;
+ }
 
 }
 
@@ -55,6 +88,23 @@
         max-width: 21rem;
         margin:.5vw 0vw;
     }
+    /* footer responsive styling */
+    .footer{
+        justify-content: center;
+     }
+     .logo-me {
+        height: 15vw;
+        width: 15vw;
+     }
+     .logo {
+         height: 4vw;
+         width: 4vw;
+       }
+     .thanks-text {
+         margin-top: 1rem;
+         justify-content: center;
+     }
+    
  }
 
 /* Large devices (desktops, 992px and up) */
@@ -79,6 +129,23 @@
     .top-row-dash {
         height: 15vw;
     }
+    /* footer responsive styling */
+    .footer{
+        justify-content: space-between;
+     }
+     .logo-me {
+        height: 10vw;
+        width: 10vw;
+     }
+     .logo {
+         height: 4vw;
+         width: 4vw;
+       }
+     .thanks-text {
+         margin-top: 1rem;
+         justify-content: center;
+     }
+    
  }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -101,6 +168,22 @@
     .top-row-dash {
         height: 12vw;
     }
+     /* footer responsive styling */
+     .footer{
+        justify-content: space-between;
+     }
+     .logo-me {
+        height: 8vw;
+        width: 8vw;
+     }
+     .logo {
+         height: 3vw;
+         width: 3vw;
+       }
+     .thanks-text {
+         margin-top: 1rem;
+         justify-content: center;
+     }
  }
 
 /* XX-Large devices (larger desktops, 1400px and up) */

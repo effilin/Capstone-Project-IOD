@@ -3,6 +3,7 @@ import Spotify from "./mainPage/Spotify"
 import { useEffect, useState, useContext } from "react";
 import { HelpfulContext } from "../context";
 import '../globals.css'
+import '../../styles/responsive.css'
 
 
 export default function Footer() {
@@ -30,7 +31,7 @@ export default function Footer() {
         }}
     
         if( starsPresent === true) {
-          console.log("stars out") 
+          
           const parent = document.querySelector('.star-box-footer')
           const children = document.querySelectorAll(".star")
           children.forEach((child) => parent.removeChild(child))
@@ -42,8 +43,8 @@ export default function Footer() {
       },[])
 
     return (
-      <div className="star-box-footer">
-        <div className="footer card main-card d-flex flex-row justify-content-between">
+      <div className="star-box-footer d-flex justify-content-center">
+        <div className="footer card main-card d-flex flex-row flex-wrap">
             <div className="foot1 m-1">
               <Spotify />
             </div>
@@ -54,19 +55,17 @@ export default function Footer() {
                       <h5>{helpfulMessage.message? helpfulMessage.message: `Hello! \u{1F44B}`}</h5>
                    
                   </div>
-                  <div className="d-flex flex-column ">
+                  <div className="thanks-text d-flex flex-column ">
                     <div className="d-flex flex-row">
                        <h6 className="text2">Thank you for visiting puzzled</h6>
                        <p className="mx-2">&#128151;</p>
-                       
                     </div>
                     <div className="d-flex flex-row ">
                         <h6 className="text2">Connect with me:</h6>
                         <a href="https://www.linkedin.com/in/eva-nummer-20651674/"><img src="/images/Linkedin.png" className="float-end align-self-baseline logo mx-2" alt="LinkedIn logo"/></a>
                         <a href="https://github.com/effilin"><img src="/images/github.png" className="float-end align-self-baseline logo mx-2" alt="Github logo"/></a>
                     </div>
-                 
-              </div>
+                  </div>
             </div>
             <img src="/images/logo.png" className="float-end logo-me align-self-end" alt="Cactus logo for Eva Nummer"/>
         </div>

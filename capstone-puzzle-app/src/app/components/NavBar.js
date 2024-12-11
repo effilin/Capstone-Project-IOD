@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import { useEffect } from "react";
+
 import '../globals.css';
 import { useContext } from "react";
 import { ThemeContext } from "../context";

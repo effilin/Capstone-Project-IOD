@@ -1,7 +1,7 @@
 
 import dbConnect from "@/lib/db";
 import Puzzle from "@/models/Puzzle";
-import { NextResponse } from "next/server";
+
 
 
 
@@ -14,6 +14,7 @@ export async function GET(request) {
         const searchParams = request.nextUrl.searchParams
 
         const number = searchParams.get('number')
+        console.log(number)
         
 
         if(!number ) {

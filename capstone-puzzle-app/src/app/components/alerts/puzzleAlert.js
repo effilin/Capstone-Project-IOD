@@ -56,12 +56,13 @@ export default function PuzzleAlert({onClose}) {
   
 
     return (
-        <div className="alert-card winner-box d-flex justify-content-center">
+        <div className="alert-card winner-box d-flex justify-content-center ">
             <div className="alert alert-dismissible alert-box" role="alert">
-               <div className="d-flex justify-content-center align-self-center">
+               <div className="d-flex flex-row justify-content-around align-self-center card main-card">
+                    <button type="button" className="btn-close alert-dismissible mt-0" data-bs-dismiss="alert" aria-label="Close" onClick={onClose}></button>
                     <h4 className="text"> Great Job! You won!</h4>
+                    
                </div>
-               <button type="button" className="btn-close alert-dismissible" data-bs-dismiss="alert" aria-label="Close" onClick={onClose}></button>
             </div>
         </div>     
     );
