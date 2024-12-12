@@ -6,14 +6,14 @@ import '../../globals.css';
 
 export default function Weather() {
 
- const [weather, setWeather] = useState({})
+ const [weather, setWeather] = useState()
  const {currentUser, setCurrentUser} = useContext(UserContext);
  const [conditions, setConditions] = useState();
- const [city, setCity] = useState('');
- const [state, setState] = useState('');
- const [temp, setTemp] = useState('');
+ const [city, setCity] = useState();
+ const [state, setState] = useState();
+ const [temp, setTemp] = useState();
  const [error, setError] = useState()
- const [icon, setIcon] = useState('')
+ const [icon, setIcon] = useState()
 
 
 
@@ -69,11 +69,15 @@ useEffect(() => {
     setIcon(weather.current.condition.icon)
 }},[weather])
 
+console.log(`weather is${weather}`)
+
 
 return ( 
 <div>
     {!weather? 
-    <div> Loading...</div>:
+    <div>
+        <h4>Loading... </h4>
+    </div>:
     <div className="d-flex">
         <div className="weather-box">
             <h5 className="text">Weather in: {city}, {state}</h5>
