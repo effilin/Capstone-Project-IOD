@@ -52,7 +52,7 @@ export default function Dashboard() {
         }
       
     
-      })
+      },[])
 
     const toastThanks = () => toast("Thanks for the riddle");
 

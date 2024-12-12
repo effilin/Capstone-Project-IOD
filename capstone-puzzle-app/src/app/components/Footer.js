@@ -41,7 +41,7 @@ export default function Footer() {
         setStar(true)
         stars()
         }
-      },[])
+      }, [])
 
     return (
       <div className="star-box-footer d-flex justify-content-center">
