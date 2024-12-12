@@ -11,6 +11,7 @@ export async function POST(req) {
     try {
        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${encodeURIComponent(weatherKey)}&q=${encodeURIComponent(zipCodeCurrent)}`)
        const weatherData = await response.json();
+       console.log(weatherData)
         
        return new Response(JSON.stringify(weatherData), {
         status: 200,

@@ -12,7 +12,6 @@ export default function Weather() {
  const [city, setCity] = useState();
  const [state, setState] = useState();
  const [temp, setTemp] = useState();
- const [error, setError] = useState()
  const [icon, setIcon] = useState()
 
 
@@ -33,6 +32,7 @@ export default function Weather() {
                 });
      
                 const data = await res.json()
+                console.log(data);
                 if(isMounted) {
                     if (res.ok) {
                         console.log('weather fetched')
@@ -61,6 +61,7 @@ useEffect(() => {
         console.log('no weather');
     }
     if(weather) {
+    console.log(`weather is${weather.current}`)
     
     setConditions( weather.current.condition.text);
     setCity( weather.location.name)
@@ -69,7 +70,7 @@ useEffect(() => {
     setIcon(weather.current.condition.icon)
 }},[weather])
 
-console.log(`weather is${weather.current}`)
+
 
 
 return ( 
