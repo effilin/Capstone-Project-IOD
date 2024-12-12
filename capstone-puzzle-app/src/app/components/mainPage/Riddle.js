@@ -1,7 +1,7 @@
 'use client'
 
 import'../../globals.css';
-import '../../../styles/responsive.css';
+import '../../../../public/styles/responsive.css';
 import { useState, useEffect,useContext } from 'react';
 import { UserContext } from '@/app/context';
 import { ToastContainer, toast } from 'react-toastify';
@@ -118,7 +118,7 @@ export function Riddle() {
         <div className="">
             <div className="card-body ">
                 <h3 className='text'>Today&apos;s Riddle: </h3>
-                <h5 className='text2'>{riddle}</h5>
+                <h5 className='text2'>{riddle? riddle : "loading..."}</h5>
                 <div className='form-box d-flex justify-content-start'>
                 <ToastContainer position="top-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" /> 
                     <form onSubmit={(e) => handleGuess(e, guess)}>

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import SingleCard from "./singleCard";
 import { useContext } from "react"
 import { PuzzleContext } from "@/app/context"
-import PuzzleAlert from "../alerts/puzzleAlert";
 import { UserContext } from "@/app/context";
 import { ToastContainer,toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';

@@ -3,8 +3,8 @@ import Spotify from "./mainPage/Spotify"
 import { useEffect, useState, useContext } from "react";
 import { HelpfulContext } from "../context";
 import '../globals.css'
-import '../../styles/responsive.css'
-import Image from "next/image";
+import '../../../public/styles/responsive.css';
+
 
 
 export default function Footer() {

@@ -1,6 +1,6 @@
 'use client'
 
-import '../styles/not-found.css';
+import '../../public/styles/not-found.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
  

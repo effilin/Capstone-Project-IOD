@@ -5,7 +5,7 @@ import { toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, } from "react";
 import '../../globals.css'
-import '../../../styles/responsive.css'
+import '../../../../public/styles/responsive.css'
 
 
 export default function Welcome() {

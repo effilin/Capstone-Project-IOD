@@ -1,5 +1,5 @@
 import '../../globals.css'
-import '../../../styles/responsive.css'
+import '../../../../public/styles/responsive.css';
 
 export default function Spotify() {
 

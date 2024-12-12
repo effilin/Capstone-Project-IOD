@@ -1,5 +1,5 @@
 'use client'
-import '../../../styles/puzzle.css';
+import '../../../../public/styles/puzzle.css';
 import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 

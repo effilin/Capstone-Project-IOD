@@ -1,6 +1,6 @@
 'use client'
 import '../globals.css';
-import '../../styles/responsive.css'
+import '../../../public/styles/responsive.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react";
 import { useContext } from "react"
@@ -52,7 +52,7 @@ export default function Dashboard() {
         }
       
     
-      },[])
+      })
 
     const toastThanks = () => toast("Thanks for the riddle");
 

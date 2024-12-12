@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import '../../../styles/alerts.css';
+import '../../../../public/styles/alerts.css';
 import '../../globals.css'
 
 export default function PuzzleAlert({onClose}) {
