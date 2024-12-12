@@ -69,7 +69,7 @@ useEffect(() => {
     setIcon(weather.current.condition.icon)
 }},[weather])
 
-console.log(`weather is${weather}`)
+console.log(`weather is${weather.current}`)
 
 
 return ( 
