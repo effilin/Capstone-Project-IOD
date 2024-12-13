@@ -9,7 +9,7 @@ export async function POST(req) {
     
     const weatherKey = process.env.WEATHER_KEY;
     try {
-       const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${encodeURIComponent(weatherKey)}&q=${encodeURIComponent(zipCodeCurrent)}`)
+       const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${encodeURIComponent(weatherKey)}&q=${encodeURIComponent(zipCodeCurrent)}`)
        const weatherData = await response.json();
        console.log(weatherData)
         
