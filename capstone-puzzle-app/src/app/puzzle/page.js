@@ -57,13 +57,16 @@ export default function PuzzlePage() {
         setAllSolved(false);
         console.log(`number${number}`)
         
-
         const fetchData = async() => {
+          if (number === 0 ){
+            number = 1;
+          }
           if (number > puzzleInfo.count) {
             setAllSolved(true);
             toastComeBack();
             setHelpfulMessage({message:" You solved all the current puzzle's please come back next time for new puzzles!"});
           }
+          
                 try {
             const res= await fetch(`/api/puzzles?number=${encodeURIComponent(number)}`, {
                     method: 'GET',
@@ -114,7 +117,9 @@ export default function PuzzlePage() {
                     alertVisible? 
                     <div id="winnerAlert" >
                         <PuzzleAlert onClose={() => setAlertVisible(false)} />
-                    </div>: allSolved? <h1> Until Next Time!</h1>:
+                    </div>
+                    
+                    : allSolved? <h1> Until Next Time!</h1>:
                      <PuzzleCards />
                      }
                     </div>

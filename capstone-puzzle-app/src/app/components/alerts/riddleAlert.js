@@ -52,7 +52,7 @@ export default function RiddleAlert({onClose}) {
                 shootBalls()
             }
 
-    },[ballsPresent])
+    },[])
   
 
     return (

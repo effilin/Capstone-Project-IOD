@@ -211,7 +211,7 @@ export default function Dashboard() {
                 <div className=" card main-card top-row-dash dash-card">
                     <div className="card-body ">
                         <h4 className='text'>Stats:</h4>
-                        <h6 className='text2'>Puzzle wins: { currentUser.name? currentUser.puzzleStat : "none available"}</h6>
+                        <h6 className='text2'>Current Puzzle: { currentUser.name? currentUser.puzzleStat : "none available"}</h6>
                         <h6 className='text2'>Riddle wins: {currentUser.name? currentUser.riddleStat : "none available"}</h6>
                     </div>
                 </div>

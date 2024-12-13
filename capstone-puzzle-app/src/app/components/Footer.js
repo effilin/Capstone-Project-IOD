@@ -52,16 +52,16 @@ export default function Footer() {
             <div className="d-flex flex-column justify-content-between">
               
                   <div className="helpful-hints footer-card card main-card align-self-start p-2">
-                    <h4 className="text">Helpful Hints: </h4>
+                    <h4 className="text2">Helpful Hints: </h4>
                       <h5>{helpfulMessage.message? helpfulMessage.message: `Hello! \u{1F44B}`}</h5>
                    
                   </div>
                   <div className="thanks-text d-flex flex-column ">
-                    <div className="d-flex flex-row">
+                    <div className="d-flex flex-row justify-content-center">
                        <h6 className="text2">Thank you for visiting puzzled</h6>
                        <p className="mx-2">&#128151;</p>
                     </div>
-                    <div className="d-flex flex-row ">
+                    <div className="d-flex flex-row justify-content-center ">
                         <h6 className="text2">Connect with me:</h6>
                         <a href="https://www.linkedin.com/in/eva-nummer-20651674/"><img src="/images/Linkedin.png" className="float-end align-self-baseline logo mx-2" alt="LinkedIn logo"/></a>
                         <a href="https://github.com/effilin"><img src="/images/github.png" className="float-end align-self-baseline logo mx-2" alt="Github logo"/></a>
