@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
             <div className="d-flex flex-column justify-content-between">
               
-                  <div className="footer-card card main-card align-self-start p-2">
+                  <div className="helpful-hints footer-card card main-card align-self-start p-2">
                     <h4 className="text">Helpful Hints: </h4>
                       <h5>{helpfulMessage.message? helpfulMessage.message: `Hello! \u{1F44B}`}</h5>
                    

@@ -173,7 +173,7 @@ a:hover {
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#938cd35e;
   --font-color:  #fcf2f2;
-  --font-contrast: rgb(27, 26, 29); 
+  --font-contrast: rgb(248, 247, 250); 
   --popup-color: #e4c6c6;
   --a-color: rgb(160, 149, 221);
   --a-color-hover: rgb(1, 1, 1);
@@ -188,7 +188,7 @@ a:hover {
   --box-shadow: 0 0.3rem .6rem rgba(3, 2, 5, 0.664);
   --secondary-color:#39558086;
   --font-color:  #fcf2f2;
-  --font-contrast: rgb(21, 20, 26);
+  --font-contrast: rgb(237, 236, 241);
   --font-color-hover: #a6b1e1;
   --popup-color: #a6b1e1;
   --a-color: rgb(123, 135, 173);

@@ -33,6 +33,8 @@ export async function POST(req , res) {
     }
 
 export async function GET(request) {
+
+    await dbConnect();
     
     try {
         
@@ -60,6 +62,8 @@ export async function GET(request) {
 };
 
 export async function DELETE(request) {
+
+    await dbConnect();
     
     try {
         
@@ -80,6 +84,8 @@ export async function DELETE(request) {
 };
 
 export async function PUT(req, res) {
+
+    await dbConnect();
     
     try {
         
