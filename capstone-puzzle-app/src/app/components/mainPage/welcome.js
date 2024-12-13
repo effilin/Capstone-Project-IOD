@@ -1,5 +1,5 @@
 'use client'
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext , ThemeContext, HelpfulContext} from "@/app/context";
 import { toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -75,6 +75,7 @@ export default function Welcome() {
 
             if(res.ok) {
                 const user = await res.json();
+                console.log(user)
                 setCurrentUser(user)
                 setHelpfulMessage({message:"Thanks for coming back! check out the new puzzles! As always check out the page not found! "})
             } else {
@@ -87,6 +88,7 @@ export default function Welcome() {
         }
    };
 
+  
 {/* home page when not logged in */}
     if ( currentUser.name === undefined) {
         return (
@@ -176,5 +178,6 @@ export default function Welcome() {
                 <h2 className="welcome1">Welcome, {currentUser.name}!</h2>
             </div>
 
-    )}}
+    )}
+}
 

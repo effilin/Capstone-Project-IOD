@@ -20,6 +20,7 @@ export async function POST(req , res) {
         }
     
         const newUser = new User({name, zipCode, theme});
+        console.log(newUser)
     
         await newUser.save()
         
@@ -45,6 +46,7 @@ export async function GET(request) {
         };
 
         const user = await User.findOne({ name: name, zipCode: zipCode })
+        console.log(user)
 
          if (!user) {
             return new Response(JSON.stringify({error: 'user not found'}), {status: 404})
