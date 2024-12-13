@@ -184,6 +184,9 @@
          margin-top: 1rem;
          justify-content: center;
      }
+     .helpful-hints {
+        max-width: 30vw ;
+     }
  }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
@@ -221,6 +224,9 @@
      .thanks-text {
          margin-top: 1rem;
          justify-content: center;
+     }
+     .helpful-hints {
+        max-width: 30vw ;
      }
  }
 

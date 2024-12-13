@@ -81,7 +81,9 @@ useEffect(() => {
 function handleClick(e) {
   e.preventDefault();
   setEnd('running');
-  setTimeout(() => {router.push('/')}, 3*1000 );
+  setTimeout(() => {
+    router.push('/');
+  }, 3*1000 );
 }
  
   

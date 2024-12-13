@@ -19,6 +19,7 @@ export default function NavBar() {
                             <li><Link className="dropdown-item" href="/">Home</Link></li>
                             <li><Link className="dropdown-item" href="/dashboard">Dashboard</Link></li>
                             <li><Link className="dropdown-item" href="/puzzle">Puzzle</Link></li>
+                            <li><Link className="dropdown-item" href="t">Page Not Found</Link></li>
                         </ul>
                 </div>
                     <h1>Puzzled</h1>
