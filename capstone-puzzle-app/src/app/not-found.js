@@ -125,7 +125,7 @@ function handleClick(e) {
             <div className='l7'></div>
             <div className='l8'></div>
       </div>
-      <img src="/images/logo.png" className="float-end align-self-baseline logo" alt="Cactus logo for Eva Nummer"/>
+    
     </div>
   )
 }

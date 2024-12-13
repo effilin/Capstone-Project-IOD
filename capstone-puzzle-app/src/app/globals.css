@@ -30,11 +30,10 @@ body {
   font-weight: 400;
   width: 98%;
   border-radius: 10px;
-  visibility: visible;
+  
  
 }
 .nav-container {
-  display: block;
   width: 100%;
 }
 

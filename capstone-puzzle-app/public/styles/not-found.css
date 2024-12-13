@@ -11,14 +11,7 @@
     
 }
 
-.logo {
-    height: 5rem;
-    width: 5rem;
-    position: absolute;
-    top: 90%;
-    left: 90%;
-    opacity: .6;
-}
+
 .animation-background {
     position: relative;
     height:72vw;
