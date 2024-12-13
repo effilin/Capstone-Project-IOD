@@ -2,7 +2,8 @@
 import './globals.css';
 import Welcome from "./components/mainPage/welcome";
 import { useEffect, useState, useContext } from 'react';
-import { PuzzleContext, HelpfulContext } from './context';
+import { PuzzleContext, HelpfulContext,ThemeContext } from './context';
+
 
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
   const [starsPresent, setStar] = useState(false)
   const {puzzleInfo, setPuzzleInfo} = useContext(PuzzleContext);
   const {helpfulMessage, setHelpfulMessage} = useContext(HelpfulContext);
+  const {theme, changeTheme} = useContext(ThemeContext);
 
   useEffect(() => {
 
@@ -39,6 +41,7 @@ export default function Home() {
     } else {
     setStar(true)
     stars()
+
     }
 
   },[])

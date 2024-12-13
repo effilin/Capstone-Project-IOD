@@ -26,10 +26,10 @@ export const PuzzleProvider = ({children}) => {
 }
 
 export const ThemeProvider = ({children}) => {
-    const [theme, setTheme] = useState("garden-view");
+    const [theme, setTheme] = useState("night-sky");
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
+        const savedTheme = localStorage.getItem('theme') || "night-sky";
         if(savedTheme) {
             setTheme(savedTheme);
             document.documentElement.setAttribute('data-theme', savedTheme)
